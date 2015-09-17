@@ -12,31 +12,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class observaciones extends javax.swing.JFrame {
-    
-    
 
     public observaciones() {
         initComponents();
         limpiar();
-                setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
-
-        
+                setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());    
     }
-        
-        
+
         void limpiar(){
-    
-   
+
         t_fecha1.setSelectedIndex(0);
         t_fecha2.setSelectedIndex(0);
         t_fecha3.setSelectedIndex(0);
-        t_Nombre.setText("");
+        txtPlaca.setText("");
         t_serial.setText("");
         t_Usuario.setText("");
         t_observacion.setText("");
         cmbDependencia.setSelectedIndex(0);
-    
-        
+
         this.getContentPane().setBackground(Color.white);
         
         setExtendedState(observaciones.MAXIMIZED_BOTH);
@@ -77,7 +70,7 @@ public class observaciones extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmbDependencia = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
-        t_Nombre = new javax.swing.JTextField();
+        txtPlaca = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +81,11 @@ public class observaciones extends javax.swing.JFrame {
         jLabel4.setText("Serial:");
 
         t_serial.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        t_serial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                t_serialKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel5.setText("Fecha:");
@@ -145,9 +143,9 @@ public class observaciones extends javax.swing.JFrame {
         cmbDependencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione>>", "Catastro", "Desarrollo", "Infraestructura", "Valorizacion", "Archivo", "Almacen", "Planeacion", "Salud", "Sisben", "Control Interno", "Control Disciplinario", "Juridica", "Despacho 1a Dama", "Oficina de Calidad", "Alcaldia", "Hacienda", "Tesoreria", "Gobierno", "Sistemas", "Comunicaciones", "Inspeccion", "Transito", "Oficina de Empleo", "Comisaria de Familia", "Educacion", "Casa de la Cultura", "Programas Sociales", "Casa de la Mujer", "Invicop", "Junta de Daportes" }));
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
-        jLabel7.setText("Nombre PC:");
+        jLabel7.setText("Placa:");
 
-        t_Nombre.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        txtPlaca.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,7 +179,7 @@ public class observaciones extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(t_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(t_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,7 +208,7 @@ public class observaciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(t_serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(t_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -244,26 +242,24 @@ public class observaciones extends javax.swing.JFrame {
         conexion cc = new conexion();
         Connection cn = cc.conexion();
         
-        String Serial,NombrePC,Usuario,Dependencia,FechaMantenimiento,Mantenimiento;
+        String Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento;
         String sql="";
         
         Serial = t_serial.getText();
-        NombrePC = t_Nombre.getText();
+        Placa = txtPlaca.getText();
         Usuario = t_Usuario.getText();
         Dependencia = cmbDependencia.getSelectedItem().toString();
         FechaMantenimiento = t_fecha1.getSelectedItem().toString()+"-" + t_fecha2.getSelectedItem().toString()+"-"+ t_fecha3.getSelectedItem().toString();        
         Mantenimiento = t_observacion.getText();
         
-        
-        sql="INSERT INTO observaciones (Serial,NombrePC,Usuario,Dependencia,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
+        sql="INSERT INTO observaciones (Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
         try {
         PreparedStatement pst;
         
             pst = cn.prepareStatement(sql);
-       
-        
+
         pst.setString(1,Serial);
-        pst.setString(2,NombrePC);
+        pst.setString(2,Placa);
         pst.setString(3,Usuario);
         pst.setString(4,Dependencia);
         pst.setString(5,FechaMantenimiento);
@@ -283,6 +279,10 @@ public class observaciones extends javax.swing.JFrame {
     }
             
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void t_serialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_serialKeyPressed
+        
+    }//GEN-LAST:event_t_serialKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -327,12 +327,12 @@ public class observaciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField t_Nombre;
     private javax.swing.JTextField t_Usuario;
     private javax.swing.JComboBox t_fecha1;
     private javax.swing.JComboBox t_fecha2;
     private javax.swing.JComboBox t_fecha3;
     private javax.swing.JTextArea t_observacion;
     private javax.swing.JTextField t_serial;
+    private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }

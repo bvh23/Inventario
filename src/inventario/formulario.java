@@ -16,9 +16,16 @@ public class formulario extends javax.swing.JFrame {
     public formulario() {
         
         initComponents();
-        limpiar();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
+       
+        this.getContentPane().setBackground(Color.white);
         
+        setExtendedState(formulario.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Ingreso de datos");  
+        setDefaultCloseOperation(0);
+        limpiar();
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());   
     }
         
       void limpiar(){
@@ -57,19 +64,42 @@ public class formulario extends javax.swing.JFrame {
         t_MarcaR.setText("");
         t_PlacaR.setText("");
         t_ReferenciaR.setText("");
- 
-        this.getContentPane().setBackground(Color.white);
-        
-        setExtendedState(formulario.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        setLocationRelativeTo(null);
-        setTitle("Ingreso de datos");
-        
-        setDefaultCloseOperation(0);
-        
+    
     }
-
+      
+      public void Validar(){
+      
+      if(t_serial.getText().equals("")){jLabel31.setVisible(true);}else{jLabel31.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_dependencia.getSelectedItem().equals("Seleccione>>")){jLabel32.setVisible(true);}else{jLabel32.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(cmbSO.getSelectedItem().equals("Seleccione>>")){jLabel33.setVisible(true);}else{jLabel33.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_marca.getText().equals("")){jLabel34.setVisible(true);}else{jLabel34.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_usuario.getText().equals("")){jLabel35.setVisible(true);}else{jLabel35.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(cmbOffice.getSelectedItem().equals("Seleccione>>")){jLabel36.setVisible(true);}else{jLabel36.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_placa.getText().equals("")){jLabel37.setVisible(true);}else{jLabel37.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_Nombre.getText().equals("")){jLabel38.setVisible(true);}else{jLabel38.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(cmbAntivirus.getSelectedItem().equals("Seleccione>>")){jLabel39.setVisible(true);}else{jLabel39.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_referencia.getText().equals("")){jLabel40.setVisible(true);}else{jLabel40.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_Procesador.getText().equals("")){jLabel41.setVisible(true);}else{jLabel41.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_Disco.getText().equals("")){jLabel42.setVisible(true);}else{jLabel42.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_estado.getSelectedItem().equals("Seleccione>>")){jLabel43.setVisible(true);}else{jLabel43.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_ram.getText().equals("")){jLabel44.setVisible(true);}else{jLabel44.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_IP.getText().equals("")){jLabel45.setVisible(true);}else{jLabel45.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_SerialM1.getText().equals("")){jLabel48.setVisible(true);}else{jLabel48.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_MarcaM1.getText().equals("")){jLabel49.setVisible(true);}else{jLabel49.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_PlacaM1.getText().equals("")){jLabel50.setVisible(true);}else{jLabel50.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_ReferenciaM1.getText().equals("")){jLabel51.setVisible(true);}else{jLabel51.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_SerialT1.getText().equals("")){jLabel47.setVisible(true);}else{jLabel47.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_MarcaT1.getText().equals("")){jLabel52.setVisible(true);}else{jLabel52.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_PlacaT1.getText().equals("")){jLabel53.setVisible(true);}else{jLabel53.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_ReferenciaT1.getText().equals("")){jLabel54.setVisible(true);}else{jLabel54.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_SerialR.getText().equals("")){jLabel56.setVisible(true);}else{jLabel56.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_MarcaR.getText().equals("")){jLabel57.setVisible(true);}else{jLabel57.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_PlacaR.getText().equals("")){jLabel58.setVisible(true);}else{jLabel58.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      if(t_ReferenciaR.getText().equals("")){jLabel59.setVisible(true);}else{jLabel59.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
+      
+      }
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -849,6 +879,8 @@ public class formulario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
         principal obj= new principal();
@@ -857,6 +889,7 @@ public class formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
         
         conexion cc = new conexion();
         Connection cn = cc.conexion();
@@ -898,9 +931,11 @@ public class formulario extends javax.swing.JFrame {
         ReferenciaMouse = t_ReferenciaR.getText(); 
         String fechaC=t_fechadecompra.getSelectedItem().toString()+"-" + t_fechadecompra2.getSelectedItem().toString()+"-"+ t_fechadecompra3.getSelectedItem().toString();
 
+        Validar();
         
         sql="INSERT INTO formulario (CPU,Serial,Marca,Placa,Referencia,Estado,Dependencia,Usuario,NombrePC,Procesador,RAM,SistemaOperativo,Office,Antivirus,DiscoDuro,Ip,FechaCompra,Monitor,SerialMonitor,MarcaMonitor,PlacaMonitor,ReferenciaMonitor,Teclado,SerialTeclado,MarcaTeclado,PlacaTeclado,ReferenciaTeclado,Mouse,SerialMouse,MarcaMouse,PlacaMouse,ReferenciaMouse) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
+     
         PreparedStatement pst1;
         
             pst1 = cn.prepareStatement(sql);

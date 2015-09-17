@@ -17,23 +17,31 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class modificar extends javax.swing.JFrame {
-    
+
     DefaultTableModel model;
 
     public modificar() {
         initComponents();
-        
+
+        this.getContentPane().setBackground(Color.white);
+
+        setExtendedState(modificar.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Modificar datos");
+
+        setDefaultCloseOperation(0);
+
         t_fecha.setText(FechaActual());
-        
+
         cargar("");
         limpiar();
-                setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
 
-        
     }
-    
-        void limpiar(){
-    
+
+    void limpiar() {
+
         t_estado.setSelectedIndex(0);
         t_usuario.setText("");
         t_dependencia.setSelectedIndex(0);
@@ -44,69 +52,64 @@ public class modificar extends javax.swing.JFrame {
         t_IP.setText("");
         t_Nombre.setText("");
         cmbMotivo.setSelectedIndex(0);
-        
-        
-        
+
     }
-        
-    
-    
-    void cargar(String valor){
-       
-                       String [] titulos={"CPU","Serial","Marca","Placa","Referencia","Estado","Dependencia","Usuario","NombrePC","Procesador","RAM","SistemaOperativo","Office","Antivirus","DiscoDuro","Ip","FechaCompra","Monitor","SerialMonitor","MarcaMonitor","PlacaMonitor","ReferenciaMonitor","Teclado","SerialTeclado","MarcaTeclado","PlacaTeclado","ReferenciaTeclado","Mouse","SerialMouse","MarcaMouse","PlacaMouse","ReferenciaMouse"};
-            String [] registros = new String[32];
-            
-            String sql="SELECT * from formulario where CONCAT(CPU,' ',Serial,' ',Marca,' ',Placa,' ',Referencia,' ',Estado,' ',Dependencia,' ',Usuario,' ',NombrePC, ' ',Procesador,' ',RAM,' ',SistemaOperativo,' ',Office,' ',Antivirus,' ',DiscoDuro,' ',Ip,' ',FechaCompra,' ',Monitor,' ',SerialMonitor,' ',MarcaMonitor,' ',PlacaMonitor,' ',ReferenciaMonitor,' ',Teclado,' ',SerialTeclado, ' ',MarcaTeclado,' ',PlacaTeclado,' ',ReferenciaTeclado,' ',Mouse,' ',SerialMouse,' ',MarcaMouse,' ',PlacaMouse,' ',ReferenciaMouse) LIKE '%"+valor+"%'";
-            
-            model = new DefaultTableModel(null,titulos);
-            
-            conexion cc = new conexion();
-            Connection cn = cc.conexion();
-              try {   
+
+    void cargar(String valor) {
+
+        String[] titulos = {"CPU", "Serial", "Marca", "Placa", "Referencia", "Estado", "Dependencia", "Usuario", "NombrePC", "Procesador", "RAM", "SistemaOperativo", "Office", "Antivirus", "DiscoDuro", "Ip", "FechaCompra", "Monitor", "SerialMonitor", "MarcaMonitor", "PlacaMonitor", "ReferenciaMonitor", "Teclado", "SerialTeclado", "MarcaTeclado", "PlacaTeclado", "ReferenciaTeclado", "Mouse", "SerialMouse", "MarcaMouse", "PlacaMouse", "ReferenciaMouse"};
+        String[] registros = new String[32];
+
+        String sql = "SELECT * from formulario where CONCAT(CPU,' ',Serial,' ',Marca,' ',Placa,' ',Referencia,' ',Estado,' ',Dependencia,' ',Usuario,' ',NombrePC, ' ',Procesador,' ',RAM,' ',SistemaOperativo,' ',Office,' ',Antivirus,' ',DiscoDuro,' ',Ip,' ',FechaCompra,' ',Monitor,' ',SerialMonitor,' ',MarcaMonitor,' ',PlacaMonitor,' ',ReferenciaMonitor,' ',Teclado,' ',SerialTeclado, ' ',MarcaTeclado,' ',PlacaTeclado,' ',ReferenciaTeclado,' ',Mouse,' ',SerialMouse,' ',MarcaMouse,' ',PlacaMouse,' ',ReferenciaMouse) LIKE '%" + valor + "%'";
+
+        model = new DefaultTableModel(null, titulos);
+
+        conexion cc = new conexion();
+        Connection cn = cc.conexion();
+        try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            
-            while(rs.next()){
-                
-                registros[0]= rs.getString("CPU");
-                registros[1]= rs.getString("Serial");
-                registros[2]= rs.getString("Marca");
-                registros[3]= rs.getString("Placa");
-                registros[4]= rs.getString("Referencia");
-                registros[5]= rs.getString("Estado");
-                registros[6]= rs.getString("Dependencia");
-                registros[7]= rs.getString("Usuario");
-                registros[8]= rs.getString("NombrePC");
-                registros[9]= rs.getString("Procesador");
-                registros[10]= rs.getString("RAM");
-                registros[11]= rs.getString("SistemaOperativo");
-                registros[12]= rs.getString("Office");
-                registros[13]= rs.getString("Antivirus");
-                registros[14]= rs.getString("DiscoDuro");
-                registros[15]= rs.getString("Ip");
-                registros[16]= rs.getString("FechaCompra");
-                registros[17]= rs.getString("Monitor");
-                registros[18]= rs.getString("SerialMonitor");
-                registros[19]= rs.getString("MarcaMonitor");
-                registros[20]= rs.getString("PlacaMonitor");
-                registros[21]= rs.getString("ReferenciaMonitor");
-                registros[22]= rs.getString("Teclado");
-                registros[23]= rs.getString("SerialTeclado");
-                registros[24]= rs.getString("MarcaTeclado");
-                registros[25]= rs.getString("PlacaTeclado");
-                registros[26]= rs.getString("ReferenciaTeclado");
-                registros[27]= rs.getString("Mouse");
-                registros[28]= rs.getString("SerialMouse");
-                registros[29]= rs.getString("MarcaMouse");
-                registros[30]= rs.getString("PlacaMouse");
-                registros[31]= rs.getString("ReferenciaMouse");
+
+            while (rs.next()) {
+
+                registros[0] = rs.getString("CPU");
+                registros[1] = rs.getString("Serial");
+                registros[2] = rs.getString("Marca");
+                registros[3] = rs.getString("Placa");
+                registros[4] = rs.getString("Referencia");
+                registros[5] = rs.getString("Estado");
+                registros[6] = rs.getString("Dependencia");
+                registros[7] = rs.getString("Usuario");
+                registros[8] = rs.getString("NombrePC");
+                registros[9] = rs.getString("Procesador");
+                registros[10] = rs.getString("RAM");
+                registros[11] = rs.getString("SistemaOperativo");
+                registros[12] = rs.getString("Office");
+                registros[13] = rs.getString("Antivirus");
+                registros[14] = rs.getString("DiscoDuro");
+                registros[15] = rs.getString("Ip");
+                registros[16] = rs.getString("FechaCompra");
+                registros[17] = rs.getString("Monitor");
+                registros[18] = rs.getString("SerialMonitor");
+                registros[19] = rs.getString("MarcaMonitor");
+                registros[20] = rs.getString("PlacaMonitor");
+                registros[21] = rs.getString("ReferenciaMonitor");
+                registros[22] = rs.getString("Teclado");
+                registros[23] = rs.getString("SerialTeclado");
+                registros[24] = rs.getString("MarcaTeclado");
+                registros[25] = rs.getString("PlacaTeclado");
+                registros[26] = rs.getString("ReferenciaTeclado");
+                registros[27] = rs.getString("Mouse");
+                registros[28] = rs.getString("SerialMouse");
+                registros[29] = rs.getString("MarcaMouse");
+                registros[30] = rs.getString("PlacaMouse");
+                registros[31] = rs.getString("ReferenciaMouse");
 
                 model.addRow(registros);
             }
-            
+
             t_datos.setModel(model);
-                
-            
+
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
             t_dependencia.setEnabled(false);
@@ -128,25 +131,14 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-              
-                
+            cmbMotivo.setEnabled(false);
+
         } catch (SQLException ex) {
-            
+
             JOptionPane.showMessageDialog(null, ex);
         }
-              this.getContentPane().setBackground(Color.white);
-              
-              setExtendedState(modificar.MAXIMIZED_BOTH);
-              setLocationRelativeTo(null);
-              setLocationRelativeTo(null);
-              setTitle("Modificar datos");
-              
-              setDefaultCloseOperation(0);
-                
-    }
-        
 
-    
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -760,129 +752,124 @@ public class modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-        principal obj= new principal();
+
+        principal obj = new principal();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    int fila = t_datos.getSelectedRow();
-    if(fila>=0){
-    
-    t_Serial.setText(t_datos.getValueAt(fila, 1).toString());    
-    t_estado.setSelectedItem(t_datos.getValueAt(fila,5).toString());
-    t_dependencia.setSelectedItem(t_datos.getValueAt(fila,6).toString());
-    t_usuario.setText(t_datos.getValueAt(fila,7).toString());
-    t_Placa.setText(t_datos.getValueAt(fila,3).toString());
-    cmbsistema.setSelectedItem(t_datos.getValueAt(fila,11).toString());
-    cmboffice.setSelectedItem(t_datos.getValueAt(fila,12).toString());
-    cmbantivirus.setSelectedItem(t_datos.getValueAt(fila,13).toString());
-    t_IP.setText(t_datos.getValueAt(fila,15).toString());
-    t_Nombre.setText(t_datos.getValueAt(fila,8).toString());
-    t_SerialM1.setText(t_datos.getValueAt(fila,18).toString());
-    t_MarcaM1.setText(t_datos.getValueAt(fila,19).toString());
-    t_PlacaM1.setText(t_datos.getValueAt(fila,20).toString());
-    t_ReferenciaM1.setText(t_datos.getValueAt(fila,21).toString());
-    t_SerialT1.setText(t_datos.getValueAt(fila,23).toString());
-    t_MarcaT1.setText(t_datos.getValueAt(fila,24).toString());
-    t_PlacaT1.setText(t_datos.getValueAt(fila,25).toString());
-    t_ReferenciaT1.setText(t_datos.getValueAt(fila,26).toString());
-    t_SerialR.setText(t_datos.getValueAt(fila,28).toString());
-    t_MarcaR.setText(t_datos.getValueAt(fila,29).toString());
-    t_PlacaR.setText(t_datos.getValueAt(fila,30).toString());
-    t_ReferenciaR.setText(t_datos.getValueAt(fila,31).toString());
-     
-    
-    }   
-    else{
-    JOptionPane.showMessageDialog(null,"No selecciono fila");
-    
+        int fila = t_datos.getSelectedRow();
+        if (fila >= 0) {
             
-    }
-    
+            cmbMotivo.setEnabled(true);
+
+            t_Serial.setText(t_datos.getValueAt(fila, 1).toString());
+            t_estado.setSelectedItem(t_datos.getValueAt(fila, 5).toString());
+            t_dependencia.setSelectedItem(t_datos.getValueAt(fila, 6).toString());
+            t_usuario.setText(t_datos.getValueAt(fila, 7).toString());
+            t_Placa.setText(t_datos.getValueAt(fila, 3).toString());
+            cmbsistema.setSelectedItem(t_datos.getValueAt(fila, 11).toString());
+            cmboffice.setSelectedItem(t_datos.getValueAt(fila, 12).toString());
+            cmbantivirus.setSelectedItem(t_datos.getValueAt(fila, 13).toString());
+            t_IP.setText(t_datos.getValueAt(fila, 15).toString());
+            t_Nombre.setText(t_datos.getValueAt(fila, 8).toString());
+            t_SerialM1.setText(t_datos.getValueAt(fila, 18).toString());
+            t_MarcaM1.setText(t_datos.getValueAt(fila, 19).toString());
+            t_PlacaM1.setText(t_datos.getValueAt(fila, 20).toString());
+            t_ReferenciaM1.setText(t_datos.getValueAt(fila, 21).toString());
+            t_SerialT1.setText(t_datos.getValueAt(fila, 23).toString());
+            t_MarcaT1.setText(t_datos.getValueAt(fila, 24).toString());
+            t_PlacaT1.setText(t_datos.getValueAt(fila, 25).toString());
+            t_ReferenciaT1.setText(t_datos.getValueAt(fila, 26).toString());
+            t_SerialR.setText(t_datos.getValueAt(fila, 28).toString());
+            t_MarcaR.setText(t_datos.getValueAt(fila, 29).toString());
+            t_PlacaR.setText(t_datos.getValueAt(fila, 30).toString());
+            t_ReferenciaR.setText(t_datos.getValueAt(fila, 31).toString());
+            
+            
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No selecciono fila");
+
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-        PreparedStatement pst1 = cn.prepareStatement("UPDATE formulario SET Estado='"+t_estado.getSelectedItem().toString()+"',Usuario='"+t_usuario.getText()+"',Dependencia='"+t_dependencia.getSelectedItem().toString()+"',Placa='"+t_Placa.getText()+"',SistemaOperativo='"+cmbsistema.getSelectedItem().toString()+"',Office='"+cmboffice.getSelectedItem().toString()+"',Antivirus='"+cmbantivirus.getSelectedItem().toString()+"',Ip='"+t_IP.getText().toString()+"',NombrePC='"+t_Nombre.getText().toString()+"',SerialMonitor='"+t_SerialM1.getText().toString()+"',MarcaMonitor='"+t_MarcaM1.getText().toString()+"',PlacaMonitor='"+t_PlacaM1.getText().toString()+"',ReferenciaMonitor='"+t_ReferenciaM1.getText().toString()+"',SerialTeclado='"+t_SerialT1.getText().toString()+"',MarcaTeclado='"+t_MarcaT1.getText().toString()+"',PlacaTeclado='"+t_PlacaT1.getText().toString()+"',ReferenciaTeclado='"+t_ReferenciaT1.getText().toString()+"',SerialMouse='"+t_SerialR.getText().toString()+"',MarcaMouse='"+t_MarcaR.getText().toString()+"',PlacaMouse='"+t_PlacaR.getText().toString()+"',ReferenciaMouse='"+t_ReferenciaR.getText().toString()+"' WHERE Serial= '"+txtserial.getText()+"'|| Placa= '"+t_Placa.getText()+"'");
-   
-        pst1.executeUpdate();
-        
-        JOptionPane.showMessageDialog(null,"Actualizado Correctamente");
-        
-        
-        cargar("");
-        
-    } catch (SQLException | HeadlessException e) {
-        JOptionPane.showMessageDialog(null,"No se pudo actualizar:\n"+"\n"+ "Asegurese de haber seleccionado el equipo y haber escogido el motivo por el cual va a cambiar el dato.","Registro denegado",JOptionPane.ERROR_MESSAGE);
-        System.out.print(e.getMessage());
-        
-    }
-        {
-          
-        String Serial,Dependencia,Usuario,Placa,FechaMantenimiento,Mantenimiento;
-        String sql="";
-        
-        Serial = t_Serial.getText();
-        Dependencia = t_dependencia.getSelectedItem().toString();
-        Usuario = t_usuario.getText();
-        Placa = t_Placa.getText();
-        FechaMantenimiento = t_fecha.getText();
-        Mantenimiento = cmbMotivo.getSelectedItem().toString();
-        
-        sql="INSERT INTO observaciones (Serial,Dependencia,Usuario,Placa,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
-        try {
-        PreparedStatement pst2;
-        
-        pst2 = cn.prepareStatement(sql);
-       
-        pst2.setString(1,Serial);
-        pst2.setString(2,Dependencia);
-        pst2.setString(3,Usuario); 
-        pst2.setString(4,Placa);
-        pst2.setString(5,FechaMantenimiento);
-        pst2.setString(6,Mantenimiento);
-        
-        pst2.executeUpdate();
-        
-        } catch (SQLException ex) {
-            Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "No se pudo registrar Mantenimiento","Registro denegado",JOptionPane.ERROR_MESSAGE);
-         
+            PreparedStatement pst1 = cn.prepareStatement("UPDATE formulario SET Estado='" + t_estado.getSelectedItem().toString() + "',Usuario='" + t_usuario.getText() + "',Dependencia='" + t_dependencia.getSelectedItem().toString() + "',Placa='" + t_Placa.getText() + "',SistemaOperativo='" + cmbsistema.getSelectedItem().toString() + "',Office='" + cmboffice.getSelectedItem().toString() + "',Antivirus='" + cmbantivirus.getSelectedItem().toString() + "',Ip='" + t_IP.getText().toString() + "',NombrePC='" + t_Nombre.getText().toString() + "',SerialMonitor='" + t_SerialM1.getText().toString() + "',MarcaMonitor='" + t_MarcaM1.getText().toString() + "',PlacaMonitor='" + t_PlacaM1.getText().toString() + "',ReferenciaMonitor='" + t_ReferenciaM1.getText().toString() + "',SerialTeclado='" + t_SerialT1.getText().toString() + "',MarcaTeclado='" + t_MarcaT1.getText().toString() + "',PlacaTeclado='" + t_PlacaT1.getText().toString() + "',ReferenciaTeclado='" + t_ReferenciaT1.getText().toString() + "',SerialMouse='" + t_SerialR.getText().toString() + "',MarcaMouse='" + t_MarcaR.getText().toString() + "',PlacaMouse='" + t_PlacaR.getText().toString() + "',ReferenciaMouse='" + t_ReferenciaR.getText().toString() + "' WHERE Serial= '" + txtserial.getText() + "'|| Placa= '" + t_Placa.getText() + "'");
+
+            pst1.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Actualizado Correctamente");
+
+            cargar("");
+
+        } catch (SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar:\n" + "\n" + "Asegurese de haber seleccionado el equipo y haber escogido el motivo por el cual va a cambiar el dato.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+            System.out.print(e.getMessage());
+
         }
-        
-        limpiar();
+        {
+
+            String Serial, Dependencia, Usuario, Placa, FechaMantenimiento, Mantenimiento;
+            String sql = "";
+
+            Serial = t_Serial.getText();
+            Dependencia = t_dependencia.getSelectedItem().toString();
+            Usuario = t_usuario.getText();
+            Placa = t_Placa.getText();
+            FechaMantenimiento = t_fecha.getText();
+            Mantenimiento = cmbMotivo.getSelectedItem().toString();
+
+            sql = "INSERT INTO observaciones (Serial,Dependencia,Usuario,Placa,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
+            try {
+                PreparedStatement pst2;
+
+                pst2 = cn.prepareStatement(sql);
+
+                pst2.setString(1, Serial);
+                pst2.setString(2, Dependencia);
+                pst2.setString(3, Usuario);
+                pst2.setString(4, Placa);
+                pst2.setString(5, FechaMantenimiento);
+                pst2.setString(6, Mantenimiento);
+
+                pst2.executeUpdate();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "No se pudo registrar Mantenimiento", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+            limpiar();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public static String FechaActual(){
-    
-    Date Fecha = new Date();
-    SimpleDateFormat formatofecha = new SimpleDateFormat("MM/dd/yyy");
-    
-    return formatofecha.format(Fecha);
-    
+    public static String FechaActual() {
+
+        Date Fecha = new Date();
+        SimpleDateFormat formatofecha = new SimpleDateFormat("MM/dd/yyy");
+
+        return formatofecha.format(Fecha);
+
     }
-    
+
     private void rdserialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdserialActionPerformed
-        if(rdserial.isSelected()==true)
-        {
+        if (rdserial.isSelected() == true) {
             txtserial.setEnabled(true);
-            txtserial.requestFocus();       
+            txtserial.requestFocus();
             txtplaca.setEnabled(false);
             txtplaca.setText("");
-            
-            
-            
 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_rdserialActionPerformed
 
     private void rdtodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdtodoActionPerformed
-        if(rdtodo.isSelected()==true)
-        {
+        if (rdtodo.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.requestFocus();
             txtplaca.setEnabled(false);
@@ -892,8 +879,7 @@ public class modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_rdtodoActionPerformed
 
     private void rdplacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdplacaActionPerformed
-        if(rdplaca.isSelected()==true)
-        {
+        if (rdplaca.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.setText("");
             txtplaca.setEnabled(true);
@@ -903,191 +889,183 @@ public class modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_rdplacaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String Serial= txtserial.getText();
-        String Placa= txtplaca.getText();
+        String Serial = txtserial.getText();
+        String Placa = txtplaca.getText();
 
-        if(rdserial.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String [] Titulos={"CPU","Serial","Marca","Placa","Referencia","Estado","Dependencia","Usuario","NombrePC","Procesador","RAM","SistemaOperativo","Office","Antivirus","DiscoDuro","Ip","FechaCompra","Monitor","SerialMonitor","MarcaMonitor","PlacaMonitor","ReferenciaMonitor","Teclado","SerialTeclado","MarcaTeclado","PlacaTeclado","ReferenciaTeclado","Mouse","SerialMouse","MarcaMouse","PlacaMouse","ReferenciaMouse"};
+        if (rdserial.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"CPU", "Serial", "Marca", "Placa", "Referencia", "Estado", "Dependencia", "Usuario", "NombrePC", "Procesador", "RAM", "SistemaOperativo", "Office", "Antivirus", "DiscoDuro", "Ip", "FechaCompra", "Monitor", "SerialMonitor", "MarcaMonitor", "PlacaMonitor", "ReferenciaMonitor", "Teclado", "SerialTeclado", "MarcaTeclado", "PlacaTeclado", "ReferenciaTeclado", "Mouse", "SerialMouse", "MarcaMouse", "PlacaMouse", "ReferenciaMouse"};
             modelo.setColumnIdentifiers(Titulos);
             this.t_datos.setModel(modelo);
             try {
 
-                String ConsultaSQL="SELECT * FROM formulario WHERE serial='"+Serial+"'";
+                String ConsultaSQL = "SELECT * FROM formulario WHERE serial='" + Serial + "'";
 
-                String []registros= new String[32];
+                String[] registros = new String[32];
 
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(ConsultaSQL);
-                while(rs.next())
-                {
-                registros[0]= rs.getString("CPU");
-                registros[1]= rs.getString("Serial");
-                registros[2]= rs.getString("Marca");
-                registros[3]= rs.getString("Placa");
-                registros[4]= rs.getString("Referencia");
-                registros[5]= rs.getString("Estado");
-                registros[6]= rs.getString("Dependencia");
-                registros[7]= rs.getString("Usuario");
-                registros[8]= rs.getString("NombrePC");
-                registros[9]= rs.getString("Procesador");
-                registros[10]= rs.getString("RAM");
-                registros[11]= rs.getString("SistemaOperativo");
-                registros[12]= rs.getString("Office");
-                registros[13]= rs.getString("Antivirus");
-                registros[14]= rs.getString("DiscoDuro");
-                registros[15]= rs.getString("Ip");
-                registros[16]= rs.getString("FechaCompra");
-                registros[17]= rs.getString("Monitor");
-                registros[18]= rs.getString("SerialMonitor");
-                registros[19]= rs.getString("MarcaMonitor");
-                registros[20]= rs.getString("PlacaMonitor");
-                registros[21]= rs.getString("ReferenciaMonitor");
-                registros[22]= rs.getString("Teclado");
-                registros[23]= rs.getString("SerialTeclado");
-                registros[24]= rs.getString("MarcaTeclado");
-                registros[25]= rs.getString("PlacaTeclado");
-                registros[26]= rs.getString("ReferenciaTeclado");
-                registros[27]= rs.getString("Mouse");
-                registros[28]= rs.getString("SerialMouse");
-                registros[29]= rs.getString("MarcaMouse");
-                registros[30]= rs.getString("PlacaMouse");
-                registros[31]= rs.getString("ReferenciaMouse");
+                while (rs.next()) {
+                    registros[0] = rs.getString("CPU");
+                    registros[1] = rs.getString("Serial");
+                    registros[2] = rs.getString("Marca");
+                    registros[3] = rs.getString("Placa");
+                    registros[4] = rs.getString("Referencia");
+                    registros[5] = rs.getString("Estado");
+                    registros[6] = rs.getString("Dependencia");
+                    registros[7] = rs.getString("Usuario");
+                    registros[8] = rs.getString("NombrePC");
+                    registros[9] = rs.getString("Procesador");
+                    registros[10] = rs.getString("RAM");
+                    registros[11] = rs.getString("SistemaOperativo");
+                    registros[12] = rs.getString("Office");
+                    registros[13] = rs.getString("Antivirus");
+                    registros[14] = rs.getString("DiscoDuro");
+                    registros[15] = rs.getString("Ip");
+                    registros[16] = rs.getString("FechaCompra");
+                    registros[17] = rs.getString("Monitor");
+                    registros[18] = rs.getString("SerialMonitor");
+                    registros[19] = rs.getString("MarcaMonitor");
+                    registros[20] = rs.getString("PlacaMonitor");
+                    registros[21] = rs.getString("ReferenciaMonitor");
+                    registros[22] = rs.getString("Teclado");
+                    registros[23] = rs.getString("SerialTeclado");
+                    registros[24] = rs.getString("MarcaTeclado");
+                    registros[25] = rs.getString("PlacaTeclado");
+                    registros[26] = rs.getString("ReferenciaTeclado");
+                    registros[27] = rs.getString("Mouse");
+                    registros[28] = rs.getString("SerialMouse");
+                    registros[29] = rs.getString("MarcaMouse");
+                    registros[30] = rs.getString("PlacaMouse");
+                    registros[31] = rs.getString("ReferenciaMouse");
                     modelo.addRow(registros);
 
                 }
                 t_datos.setModel(modelo);
-                
-            t_estado.setEnabled(false);
-            t_usuario.setEnabled(false);
-            t_dependencia.setEnabled(false);
-            t_Placa.setEnabled(false);
-            cmbsistema.setEnabled(false);
-            cmboffice.setEnabled(false);
-            cmbantivirus.setEnabled(false);
-            t_IP.setEnabled(false);
-            t_Nombre.setEnabled(false);
-            t_SerialM1.setEnabled(false);
-            t_MarcaM1.setEnabled(false);
-            t_PlacaM1.setEnabled(false);
-            t_ReferenciaM1.setEnabled(false);
-            t_SerialT1.setEnabled(false);
-            t_MarcaT1.setEnabled(false);
-            t_PlacaT1.setEnabled(false);
-            t_ReferenciaT1.setEnabled(false);
-            t_SerialR.setEnabled(false);
-            t_MarcaR.setEnabled(false);
-            t_PlacaR.setEnabled(false);
-            t_ReferenciaR.setEnabled(false);
-            
-            limpiar();
-            
+
+                t_estado.setEnabled(false);
+                t_usuario.setEnabled(false);
+                t_dependencia.setEnabled(false);
+                t_Placa.setEnabled(false);
+                cmbsistema.setEnabled(false);
+                cmboffice.setEnabled(false);
+                cmbantivirus.setEnabled(false);
+                t_IP.setEnabled(false);
+                t_Nombre.setEnabled(false);
+                t_SerialM1.setEnabled(false);
+                t_MarcaM1.setEnabled(false);
+                t_PlacaM1.setEnabled(false);
+                t_ReferenciaM1.setEnabled(false);
+                t_SerialT1.setEnabled(false);
+                t_MarcaT1.setEnabled(false);
+                t_PlacaT1.setEnabled(false);
+                t_ReferenciaT1.setEnabled(false);
+                t_SerialR.setEnabled(false);
+                t_MarcaR.setEnabled(false);
+                t_PlacaR.setEnabled(false);
+                t_ReferenciaR.setEnabled(false);
+
+                limpiar();
+
             } catch (SQLException ex) {
                 Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
-        
-
-        if(rdplaca.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String [] Titulos={"CPU","Serial","Marca","Placa","Referencia","Estado","Dependencia","Usuario","NombrePC","Procesador","RAM","SistemaOperativo","Office","Antivirus","DiscoDuro","Ip","FechaCompra","Monitor","SerialMonitor","MarcaMonitor","PlacaMonitor","ReferenciaMonitor","Teclado","SerialTeclado","MarcaTeclado","PlacaTeclado","ReferenciaTeclado","Mouse","SerialMouse","MarcaMouse","PlacaMouse","ReferenciaMouse"};
+        if (rdplaca.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"CPU", "Serial", "Marca", "Placa", "Referencia", "Estado", "Dependencia", "Usuario", "NombrePC", "Procesador", "RAM", "SistemaOperativo", "Office", "Antivirus", "DiscoDuro", "Ip", "FechaCompra", "Monitor", "SerialMonitor", "MarcaMonitor", "PlacaMonitor", "ReferenciaMonitor", "Teclado", "SerialTeclado", "MarcaTeclado", "PlacaTeclado", "ReferenciaTeclado", "Mouse", "SerialMouse", "MarcaMouse", "PlacaMouse", "ReferenciaMouse"};
             modelo.setColumnIdentifiers(Titulos);
             this.t_datos.setModel(modelo);
             try {
 
-                String ConsultaSQL="SELECT * FROM formulario WHERE placa='"+Placa+"'";
+                String ConsultaSQL = "SELECT * FROM formulario WHERE placa='" + Placa + "'";
 
-                String []registros= new String[32];
+                String[] registros = new String[32];
 
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(ConsultaSQL);
-                while(rs.next())
-                {
-                registros[0]= rs.getString("CPU");
-                registros[1]= rs.getString("Serial");
-                registros[2]= rs.getString("Marca");
-                registros[3]= rs.getString("Placa");
-                registros[4]= rs.getString("Referencia");
-                registros[5]= rs.getString("Estado");
-                registros[6]= rs.getString("Dependencia");
-                registros[7]= rs.getString("Usuario");
-                registros[8]= rs.getString("NombrePC");
-                registros[9]= rs.getString("Procesador");
-                registros[10]= rs.getString("RAM");
-                registros[11]= rs.getString("SistemaOperativo");
-                registros[12]= rs.getString("Office");
-                registros[13]= rs.getString("Antivirus");
-                registros[14]= rs.getString("DiscoDuro");
-                registros[15]= rs.getString("Ip");
-                registros[16]= rs.getString("FechaCompra");
-                registros[17]= rs.getString("Monitor");
-                registros[18]= rs.getString("SerialMonitor");
-                registros[19]= rs.getString("MarcaMonitor");
-                registros[20]= rs.getString("PlacaMonitor");
-                registros[21]= rs.getString("ReferenciaMonitor");
-                registros[22]= rs.getString("Teclado");
-                registros[23]= rs.getString("SerialTeclado");
-                registros[24]= rs.getString("MarcaTeclado");
-                registros[25]= rs.getString("PlacaTeclado");
-                registros[26]= rs.getString("ReferenciaTeclado");
-                registros[27]= rs.getString("Mouse");
-                registros[28]= rs.getString("SerialMouse");
-                registros[29]= rs.getString("MarcaMouse");
-                registros[30]= rs.getString("PlacaMouse");
-                registros[31]= rs.getString("ReferenciaMouse");
+                while (rs.next()) {
+                    registros[0] = rs.getString("CPU");
+                    registros[1] = rs.getString("Serial");
+                    registros[2] = rs.getString("Marca");
+                    registros[3] = rs.getString("Placa");
+                    registros[4] = rs.getString("Referencia");
+                    registros[5] = rs.getString("Estado");
+                    registros[6] = rs.getString("Dependencia");
+                    registros[7] = rs.getString("Usuario");
+                    registros[8] = rs.getString("NombrePC");
+                    registros[9] = rs.getString("Procesador");
+                    registros[10] = rs.getString("RAM");
+                    registros[11] = rs.getString("SistemaOperativo");
+                    registros[12] = rs.getString("Office");
+                    registros[13] = rs.getString("Antivirus");
+                    registros[14] = rs.getString("DiscoDuro");
+                    registros[15] = rs.getString("Ip");
+                    registros[16] = rs.getString("FechaCompra");
+                    registros[17] = rs.getString("Monitor");
+                    registros[18] = rs.getString("SerialMonitor");
+                    registros[19] = rs.getString("MarcaMonitor");
+                    registros[20] = rs.getString("PlacaMonitor");
+                    registros[21] = rs.getString("ReferenciaMonitor");
+                    registros[22] = rs.getString("Teclado");
+                    registros[23] = rs.getString("SerialTeclado");
+                    registros[24] = rs.getString("MarcaTeclado");
+                    registros[25] = rs.getString("PlacaTeclado");
+                    registros[26] = rs.getString("ReferenciaTeclado");
+                    registros[27] = rs.getString("Mouse");
+                    registros[28] = rs.getString("SerialMouse");
+                    registros[29] = rs.getString("MarcaMouse");
+                    registros[30] = rs.getString("PlacaMouse");
+                    registros[31] = rs.getString("ReferenciaMouse");
                     modelo.addRow(registros);
 
                 }
                 t_datos.setModel(modelo);
-                
-            t_estado.setEnabled(false);
-            t_usuario.setEnabled(false);
-            t_dependencia.setEnabled(false);
-            t_Placa.setEnabled(false);
-            cmbsistema.setEnabled(false);
-            cmboffice.setEnabled(false);
-            cmbantivirus.setEnabled(false);
-            t_IP.setEnabled(false);
-            t_Nombre.setEnabled(false);
-            t_SerialM1.setEnabled(false);
-            t_MarcaM1.setEnabled(false);
-            t_PlacaM1.setEnabled(false);
-            t_ReferenciaM1.setEnabled(false);
-            t_SerialT1.setEnabled(false);
-            t_MarcaT1.setEnabled(false);
-            t_PlacaT1.setEnabled(false);
-            t_ReferenciaT1.setEnabled(false);
-            t_SerialR.setEnabled(false);
-            t_MarcaR.setEnabled(false);
-            t_PlacaR.setEnabled(false);
-            t_ReferenciaR.setEnabled(false);
-            
-            limpiar();
-                
+
+                t_estado.setEnabled(false);
+                t_usuario.setEnabled(false);
+                t_dependencia.setEnabled(false);
+                t_Placa.setEnabled(false);
+                cmbsistema.setEnabled(false);
+                cmboffice.setEnabled(false);
+                cmbantivirus.setEnabled(false);
+                t_IP.setEnabled(false);
+                t_Nombre.setEnabled(false);
+                t_SerialM1.setEnabled(false);
+                t_MarcaM1.setEnabled(false);
+                t_PlacaM1.setEnabled(false);
+                t_ReferenciaM1.setEnabled(false);
+                t_SerialT1.setEnabled(false);
+                t_MarcaT1.setEnabled(false);
+                t_PlacaT1.setEnabled(false);
+                t_ReferenciaT1.setEnabled(false);
+                t_SerialR.setEnabled(false);
+                t_MarcaR.setEnabled(false);
+                t_PlacaR.setEnabled(false);
+                t_ReferenciaR.setEnabled(false);
+
+                limpiar();
+
             } catch (SQLException ex) {
                 Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        
+
         }
-        
-           if(rdtodo.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String [] Titulos={"CPU","Serial","Marca","Placa","Referencia","Estado","Dependencia","Usuario","NombrePC","Procesador","RAM","SistemaOperativo","Office","Antivirus","DiscoDuro","Ip","FechaCompra","Monitor","SerialMonitor","MarcaMonitor","PlacaMonitor","ReferenciaMonitor","Teclado","SerialTeclado","MarcaTeclado","PlacaTeclado","ReferenciaTeclado","Mouse","SerialMouse","MarcaMouse","PlacaMouse","ReferenciaMouse"};
+
+        if (rdtodo.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"CPU", "Serial", "Marca", "Placa", "Referencia", "Estado", "Dependencia", "Usuario", "NombrePC", "Procesador", "RAM", "SistemaOperativo", "Office", "Antivirus", "DiscoDuro", "Ip", "FechaCompra", "Monitor", "SerialMonitor", "MarcaMonitor", "PlacaMonitor", "ReferenciaMonitor", "Teclado", "SerialTeclado", "MarcaTeclado", "PlacaTeclado", "ReferenciaTeclado", "Mouse", "SerialMouse", "MarcaMouse", "PlacaMouse", "ReferenciaMouse"};
             modelo.setColumnIdentifiers(Titulos);
             this.t_datos.setModel(modelo);
-            
+
             cargar("");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cmbMotivoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMotivoItemStateChanged
 
-        if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Estado")) {
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Estado")) {
 
             t_estado.setEnabled(true);
             t_usuario.setEnabled(false);
@@ -1111,7 +1089,7 @@ public class modificar extends javax.swing.JFrame {
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
         }
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Usuario")) {
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Usuario")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(true);
@@ -1134,9 +1112,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Dependencia")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Dependencia")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1159,9 +1137,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Placa")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Placa")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1184,9 +1162,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Sistema Operativo")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Sistema Operativo")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1209,9 +1187,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Office")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Office")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1234,9 +1212,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Antivirus")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Antivirus")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1259,9 +1237,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Dirección IP")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Dirección IP")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1284,9 +1262,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Nombre PC")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Nombre PC")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1309,9 +1287,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Monitor")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Monitor")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1334,9 +1312,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Teclado")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Teclado")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1359,9 +1337,9 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setEnabled(false);
             t_PlacaR.setEnabled(false);
             t_ReferenciaR.setEnabled(false);
-            }
-            
-            if(cmbMotivo.getSelectedItem().toString().equals("Cambio de Mouse")) {
+        }
+
+        if (cmbMotivo.getSelectedItem().toString().equals("Cambio de Mouse")) {
 
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
@@ -1385,8 +1363,8 @@ public class modificar extends javax.swing.JFrame {
             t_PlacaR.setEnabled(true);
             t_ReferenciaR.setEnabled(true);
 
-        }else if(cmbMotivo.getSelectedItem().toString().equals("<<Seleccione")) {
-            
+        } else if (cmbMotivo.getSelectedItem().toString().equals("<<Seleccione")) {
+
             t_estado.setEnabled(false);
             t_usuario.setEnabled(false);
             t_dependencia.setEnabled(false);
@@ -1410,11 +1388,8 @@ public class modificar extends javax.swing.JFrame {
             t_ReferenciaR.setEnabled(false);
 
     }//GEN-LAST:event_cmbMotivoItemStateChanged
-    
-    
-            
-            
-        }
+
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1519,7 +1494,6 @@ public class modificar extends javax.swing.JFrame {
     private javax.swing.JTextField txtserial;
     // End of variables declaration//GEN-END:variables
 conexion cc = new conexion();
-Connection cn = cc.conexion();
+    Connection cn = cc.conexion();
 
 }
-
