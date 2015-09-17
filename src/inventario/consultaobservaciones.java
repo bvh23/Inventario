@@ -1,5 +1,5 @@
-package inventario;
 ///Hecho por Brian Vargas Henao. CC. 1.022.097.226
+package inventario;
 
 import java.awt.Color;
 import java.sql.Connection;
@@ -21,63 +21,59 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class consultaobservaciones extends javax.swing.JFrame {
-    
+
     DefaultTableModel model;
-    
 
     public consultaobservaciones() {
         initComponents();
         cargar2("");
-        
-setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
-    }
-void cargar2(String valor){
-       
-            String [] titulos={"Serial","Dependencia","Usuario","Placa","Fecha Mantenimiento","Mantenimiento"};
-            String [] registros = new String[6];
-            
-            String sql="SELECT * from observaciones where Serial LIKE '%"+valor+"%'";
-            
-            model = new DefaultTableModel(null,titulos);
-            
 
-              try {   
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
+    }
+
+    void cargar2(String valor) {
+
+        String[] titulos = {"Serial", "Dependencia", "Usuario", "Placa", "Fecha Mantenimiento", "Mantenimiento"};
+        String[] registros = new String[6];
+
+        String sql = "SELECT * from observaciones where Serial LIKE '%" + valor + "%'";
+
+        model = new DefaultTableModel(null, titulos);
+
+        try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            
-            while(rs.next()){
-                
-                    registros[0]=rs.getString("Serial");
-                    registros[1]=rs.getString("Dependencia");
-                    registros[2]=rs.getString("Usuario");
-                    registros[3]=rs.getString("Placa");
-                    registros[4]=rs.getString("FechaMantenimiento");
-                    registros[5]=rs.getString("Mantenimiento");
-                
-               
-                
+
+            while (rs.next()) {
+
+                registros[0] = rs.getString("Serial");
+                registros[1] = rs.getString("Dependencia");
+                registros[2] = rs.getString("Usuario");
+                registros[3] = rs.getString("Placa");
+                registros[4] = rs.getString("FechaMantenimiento");
+                registros[5] = rs.getString("Mantenimiento");
+
                 model.addRow(registros);
             }
-            
+
             t_datos2.setModel(model);
-                
-         
-                
+
         } catch (SQLException ex) {
-            
+
             JOptionPane.showMessageDialog(null, ex);
         }
-              
-              this.getContentPane().setBackground(Color.white);
-              
-              setExtendedState(consulta.MAXIMIZED_BOTH);
-              setLocationRelativeTo(null);
-              setLocationRelativeTo(null);
-              setTitle("Consulta de Mantenimientos");
-              
-              setDefaultCloseOperation(0);
-                
+
+        this.getContentPane().setBackground(Color.white);
+
+        setExtendedState(consulta.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Consulta de Mantenimientos");
+
+        setDefaultCloseOperation(0);
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -272,7 +268,7 @@ void cargar2(String valor){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        principal obj= new principal();
+        principal obj = new principal();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -282,8 +278,7 @@ void cargar2(String valor){
     }//GEN-LAST:event_txtusuarioActionPerformed
 
     private void rdserialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdserialActionPerformed
-        if(rdserial.isSelected()==true)
-        {
+        if (rdserial.isSelected() == true) {
             txtserial.setEnabled(true);
             txtserial.requestFocus();
             txtplaca.setEnabled(false);
@@ -297,8 +292,7 @@ void cargar2(String valor){
     }//GEN-LAST:event_rdserialActionPerformed
 
     private void rdtodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdtodoActionPerformed
-        if(rdtodo.isSelected()==true)
-        {
+        if (rdtodo.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.requestFocus();
             txtplaca.setEnabled(false);
@@ -312,8 +306,7 @@ void cargar2(String valor){
     }//GEN-LAST:event_rdtodoActionPerformed
 
     private void rddependenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rddependenciaActionPerformed
-        if(rddependencia.isSelected()==true)
-        {
+        if (rddependencia.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.requestFocus();
             txtplaca.setEnabled(false);
@@ -328,8 +321,7 @@ void cargar2(String valor){
     }//GEN-LAST:event_rddependenciaActionPerformed
 
     private void rdusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdusuarioActionPerformed
-        if(rdusuario.isSelected()==true)
-        {
+        if (rdusuario.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.setText("");
             txtplaca.setEnabled(false);
@@ -343,8 +335,7 @@ void cargar2(String valor){
     }//GEN-LAST:event_rdusuarioActionPerformed
 
     private void rdnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdnombreActionPerformed
-        if(rdnombre.isSelected()==true)
-        {
+        if (rdnombre.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.setText("");
             txtplaca.setEnabled(true);
@@ -358,151 +349,140 @@ void cargar2(String valor){
     }//GEN-LAST:event_rdnombreActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String serial= txtserial.getText();
-        String Placa= txtplaca.getText();
-        String usuario= txtusuario.getText();
-        String dependencia= txtdependencia.getSelectedItem().toString();
+        String serial = txtserial.getText();
+        String Placa = txtplaca.getText();
+        String usuario = txtusuario.getText();
+        String dependencia = txtdependencia.getSelectedItem().toString();
 
-        if(rdserial.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String []Titulos = {"Serial","Dependencia","Usuario","Placa","Fecha Mantenimiento","Mantenimiento"};
+        if (rdserial.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"Serial", "Dependencia", "Usuario", "Placa", "Fecha Mantenimiento", "Mantenimiento"};
             modelo.setColumnIdentifiers(Titulos);
             this.t_datos2.setModel(modelo);
             try {
 
-                String ConsultaSQL="SELECT * FROM observaciones WHERE Serial='"+serial+"'";
+                String ConsultaSQL = "SELECT * FROM observaciones WHERE Serial='" + serial + "'";
 
-                String []registros= new String[6];
+                String[] registros = new String[6];
 
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(ConsultaSQL);
-                while(rs.next())
-                {
-                    registros[0]=rs.getString("Serial");
-                    registros[1]=rs.getString("Dependencia");
-                    registros[2]=rs.getString("Usuario");
-                    registros[3]=rs.getString("Placa");
-                    registros[4]=rs.getString("FechaMantenimiento");
-                    registros[5]=rs.getString("Mantenimiento");
+                while (rs.next()) {
+                    registros[0] = rs.getString("Serial");
+                    registros[1] = rs.getString("Dependencia");
+                    registros[2] = rs.getString("Usuario");
+                    registros[3] = rs.getString("Placa");
+                    registros[4] = rs.getString("FechaMantenimiento");
+                    registros[5] = rs.getString("Mantenimiento");
                     modelo.addRow(registros);
 
                 }
                 t_datos2.setModel(modelo);
-             
+
             } catch (SQLException ex) {
                 Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
-       
-
-        if(rdnombre.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String []Titulos = {"Serial","Dependencia","Usuario","Placa","Fecha Mantenimiento","Mantenimiento"};
+        if (rdnombre.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"Serial", "Dependencia", "Usuario", "Placa", "Fecha Mantenimiento", "Mantenimiento"};
             modelo.setColumnIdentifiers(Titulos);
             this.t_datos2.setModel(modelo);
             try {
 
-                String ConsultaSQL="SELECT * FROM observaciones WHERE Placa='"+Placa+"'";
+                String ConsultaSQL = "SELECT * FROM observaciones WHERE Placa='" + Placa + "'";
 
-                String []registros= new String[6];
+                String[] registros = new String[6];
 
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(ConsultaSQL);
-                while(rs.next())
-                {
-                   registros[0]=rs.getString("Serial");
-                    registros[1]=rs.getString("Dependencia");
-                    registros[2]=rs.getString("Usuario");
-                    registros[3]=rs.getString("Placa");
-                    registros[4]=rs.getString("FechaMantenimiento");
-                    registros[5]=rs.getString("Mantenimiento");
+                while (rs.next()) {
+                    registros[0] = rs.getString("Serial");
+                    registros[1] = rs.getString("Dependencia");
+                    registros[2] = rs.getString("Usuario");
+                    registros[3] = rs.getString("Placa");
+                    registros[4] = rs.getString("FechaMantenimiento");
+                    registros[5] = rs.getString("Mantenimiento");
                     modelo.addRow(registros);
 
                 }
                 t_datos2.setModel(modelo);
-               
+
             } catch (SQLException ex) {
                 Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(rdusuario.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String []Titulos = {"Serial","Dependencia","Usuario","Placa","Fecha Mantenimiento","Mantenimiento"};
+        if (rdusuario.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"Serial", "Dependencia", "Usuario", "Placa", "Fecha Mantenimiento", "Mantenimiento"};
             modelo.setColumnIdentifiers(Titulos);
             this.t_datos2.setModel(modelo);
             try {
 
-                String ConsultaSQL="SELECT * FROM observaciones WHERE Usuario='"+usuario+"'";
+                String ConsultaSQL = "SELECT * FROM observaciones WHERE Usuario='" + usuario + "'";
 
-                String []registros= new String[6];
+                String[] registros = new String[6];
 
                 Statement st = cn.createStatement();
                 ResultSet rs = st.executeQuery(ConsultaSQL);
-                while(rs.next())
-                {
-                    registros[0]=rs.getString("Serial");
-                    registros[1]=rs.getString("Dependencia");
-                    registros[2]=rs.getString("Usuario");
-                    registros[3]=rs.getString("Placa");
-                    registros[4]=rs.getString("FechaMantenimiento");
-                    registros[5]=rs.getString("Mantenimiento");
+                while (rs.next()) {
+                    registros[0] = rs.getString("Serial");
+                    registros[1] = rs.getString("Dependencia");
+                    registros[2] = rs.getString("Usuario");
+                    registros[3] = rs.getString("Placa");
+                    registros[4] = rs.getString("FechaMantenimiento");
+                    registros[5] = rs.getString("Mantenimiento");
                     modelo.addRow(registros);
 
                 }
                 t_datos2.setModel(modelo);
-               
-            } catch (SQLException ex) {
-                Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        if(rddependencia.isSelected()==true)
-        {
-            DefaultTableModel modelo= new DefaultTableModel();
-            String []Titulos = {"Serial","Dependencia","Usuario","Placa","Fecha Mantenimiento","Mantenimiento"};
-            modelo.setColumnIdentifiers(Titulos);
-            this.t_datos2.setModel(modelo);
-            try {
 
-                String ConsultaSQL="SELECT * FROM observaciones WHERE Dependencia='"+dependencia+"'";
-
-                String []registros= new String[6];
-
-                Statement st = cn.createStatement();
-                ResultSet rs = st.executeQuery(ConsultaSQL);
-                while(rs.next())
-                {
-                    registros[0]=rs.getString("Serial");
-                    registros[1]=rs.getString("Dependencia");
-                    registros[2]=rs.getString("Usuario");
-                    registros[3]=rs.getString("Placa");
-                    registros[4]=rs.getString("FechaMantenimiento");
-                    registros[5]=rs.getString("Mantenimiento");
-                    modelo.addRow(registros);
-
-                }
-                t_datos2.setModel(modelo);
-               
             } catch (SQLException ex) {
                 Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
-        if(rdtodo.isSelected()==true)
-        {
+        if (rddependencia.isSelected() == true) {
+            DefaultTableModel modelo = new DefaultTableModel();
+            String[] Titulos = {"Serial", "Dependencia", "Usuario", "Placa", "Fecha Mantenimiento", "Mantenimiento"};
+            modelo.setColumnIdentifiers(Titulos);
+            this.t_datos2.setModel(modelo);
+            try {
+
+                String ConsultaSQL = "SELECT * FROM observaciones WHERE Dependencia='" + dependencia + "'";
+
+                String[] registros = new String[6];
+
+                Statement st = cn.createStatement();
+                ResultSet rs = st.executeQuery(ConsultaSQL);
+                while (rs.next()) {
+                    registros[0] = rs.getString("Serial");
+                    registros[1] = rs.getString("Dependencia");
+                    registros[2] = rs.getString("Usuario");
+                    registros[3] = rs.getString("Placa");
+                    registros[4] = rs.getString("FechaMantenimiento");
+                    registros[5] = rs.getString("Mantenimiento");
+                    modelo.addRow(registros);
+
+                }
+                t_datos2.setModel(modelo);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (rdtodo.isSelected() == true) {
             cargar2("");
-            
+
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        Reporte_Mantenimientos obj= new Reporte_Mantenimientos();
+        Reporte_Mantenimientos obj = new Reporte_Mantenimientos();
         obj.setVisible(true);
-        
+
     }//GEN-LAST:event_btnReportesActionPerformed
 
     /**
@@ -558,6 +538,6 @@ void cargar2(String valor){
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 
-conexion cc = new conexion();
-            Connection cn = cc.conexion();
+    conexion cc = new conexion();
+    Connection cn = cc.conexion();
 }

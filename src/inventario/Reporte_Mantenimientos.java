@@ -1,3 +1,4 @@
+///Hecho por Brian Vargas Henao. CC. 1.022.097.226
 package inventario;
 
 import java.awt.Color;
@@ -18,17 +19,16 @@ public class Reporte_Mantenimientos extends javax.swing.JFrame {
 
     public Reporte_Mantenimientos() {
         initComponents();
-        
+
         this.getContentPane().setBackground(Color.white);
-        
+
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
-                      
-              
-              setLocationRelativeTo(null);
-              setLocationRelativeTo(null);
-              setTitle("Reporte de Mantenimientos");
-              
-              setDefaultCloseOperation(0);
+
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Reporte de Mantenimientos");
+
+        setDefaultCloseOperation(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -121,32 +121,30 @@ public class Reporte_Mantenimientos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-     
-           conexion cc = new conexion();
-            Connection cn = cc.conexion();
-        
-        try{
 
-String UbicacionReporte = System.getProperty("user.dir") +"/src/inventario/ReporteSerialM.jasper";
+        conexion cc = new conexion();
+        Connection cn = cc.conexion();
 
-JasperReport jasperReport = (JasperReport) JRLoader.loadObject(UbicacionReporte);
+        try {
 
-Map parametro = new HashMap();
+            String UbicacionReporte = System.getProperty("user.dir") + "/src/inventario/ReporteSerialM.jasper";
 
-parametro.put("serialM",txtserial.getText());
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(UbicacionReporte);
 
-JasperPrint print = JasperFillManager.fillReport(jasperReport, parametro,cn);
-JasperViewer view = new JasperViewer(print,false);
-view.setVisible(true);
-}
+            Map parametro = new HashMap();
 
-catch(JRException ex){
-    Logger.getLogger(consultaobservaciones.class.getName()).log(Level.SEVERE,null,ex);
-}
+            parametro.put("serialM", txtserial.getText());
+
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parametro, cn);
+            JasperViewer view = new JasperViewer(print, false);
+            view.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(consultaobservaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 

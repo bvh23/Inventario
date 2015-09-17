@@ -1,5 +1,5 @@
-package inventario;
 ///Hecho por Brian Vargas Henao. CC. 1.022.097.226
+package inventario;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -16,10 +16,10 @@ public class observaciones extends javax.swing.JFrame {
     public observaciones() {
         initComponents();
         limpiar();
-                setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());    
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
     }
 
-        void limpiar(){
+    void limpiar() {
 
         t_fecha1.setSelectedIndex(0);
         t_fecha2.setSelectedIndex(0);
@@ -31,24 +31,25 @@ public class observaciones extends javax.swing.JFrame {
         cmbDependencia.setSelectedIndex(0);
 
         this.getContentPane().setBackground(Color.white);
-        
+
         setExtendedState(observaciones.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setLocationRelativeTo(null);
         setTitle("Observaciones");
-        
+
         setDefaultCloseOperation(0);
-        
-        }
-        
-         void limpiar2(){
-    
+
+    }
+
+    void limpiar2() {
+
         t_serial.setText("");
         t_fecha1.setSelectedIndex(0);
         t_fecha2.setSelectedIndex(0);
         t_fecha3.setSelectedIndex(0);
         t_observacion.setText("");
-         }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -233,7 +234,7 @@ public class observaciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        principal obj= new principal();
+        principal obj = new principal();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -241,47 +242,47 @@ public class observaciones extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         conexion cc = new conexion();
         Connection cn = cc.conexion();
-        
-        String Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento;
-        String sql="";
-        
+
+        String Serial, Placa, Usuario, Dependencia, FechaMantenimiento, Mantenimiento;
+        String sql = "";
+
         Serial = t_serial.getText();
         Placa = txtPlaca.getText();
         Usuario = t_Usuario.getText();
         Dependencia = cmbDependencia.getSelectedItem().toString();
-        FechaMantenimiento = t_fecha1.getSelectedItem().toString()+"-" + t_fecha2.getSelectedItem().toString()+"-"+ t_fecha3.getSelectedItem().toString();        
+        FechaMantenimiento = t_fecha1.getSelectedItem().toString() + "-" + t_fecha2.getSelectedItem().toString() + "-" + t_fecha3.getSelectedItem().toString();
         Mantenimiento = t_observacion.getText();
-        
-        sql="INSERT INTO observaciones (Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
+
+        sql = "INSERT INTO observaciones (Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
         try {
-        PreparedStatement pst;
-        
+            PreparedStatement pst;
+
             pst = cn.prepareStatement(sql);
 
-        pst.setString(1,Serial);
-        pst.setString(2,Placa);
-        pst.setString(3,Usuario);
-        pst.setString(4,Dependencia);
-        pst.setString(5,FechaMantenimiento);
-        pst.setString(6,Mantenimiento);
-        
-        int n = pst.executeUpdate();
-        
-         if (n>=0){
-            JOptionPane.showMessageDialog(null, "Observación guardada correctamente");
-            limpiar();
-        } 
+            pst.setString(1, Serial);
+            pst.setString(2, Placa);
+            pst.setString(3, Usuario);
+            pst.setString(4, Dependencia);
+            pst.setString(5, FechaMantenimiento);
+            pst.setString(6, Mantenimiento);
 
-         } catch (SQLException | HeadlessException e) {
-        JOptionPane.showMessageDialog(null,"No se pudo Guardar el Mantenimiento:\n"+"\n"+ "Asegurese de haber digitado el Serial del equipo al cual le realizaron el mantenimiento.","Registro denegado",JOptionPane.ERROR_MESSAGE);
-        System.out.print(e.getMessage());
-        
-    }
-            
+            int n = pst.executeUpdate();
+
+            if (n >= 0) {
+                JOptionPane.showMessageDialog(null, "Observación guardada correctamente");
+                limpiar();
+            }
+
+        } catch (SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo Guardar el Mantenimiento:\n" + "\n" + "Asegurese de haber digitado el Serial del equipo al cual le realizaron el mantenimiento.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+            System.out.print(e.getMessage());
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void t_serialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_serialKeyPressed
-        
+
     }//GEN-LAST:event_t_serialKeyPressed
 
     public static void main(String args[]) {

@@ -1,3 +1,4 @@
+///Hecho por Brian Vargas Henao. CC. 1.022.097.226
 package inventario;
 
 import java.awt.Color;
@@ -18,17 +19,16 @@ public class Reporte_Serial extends javax.swing.JFrame {
 
     public Reporte_Serial() {
         initComponents();
-        
+
         this.getContentPane().setBackground(Color.white);
-        
+
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
-                      
-              
-              setLocationRelativeTo(null);
-              setLocationRelativeTo(null);
-              setTitle("Reportes de Equipos");
-              
-              setDefaultCloseOperation(0);
+
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Reportes de Equipos");
+
+        setDefaultCloseOperation(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -126,33 +126,29 @@ public class Reporte_Serial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-           
-    try{
-        conexion cc = new conexion();
+
+        try {
+            conexion cc = new conexion();
             Connection cn = cc.conexion();
-    
-        String ubicacionReporte=System.getProperty("user.dir")+"/src/inventario/ReporteSerial.jasper";
-                JasperReport jasperReport= (JasperReport) JRLoader.loadObject(ubicacionReporte);
-        
-        Map parametro=new HashMap();
-        
-        parametro.put("serial",txtserial.getText());
-       
- 
-     
-    JasperPrint print = JasperFillManager.fillReport(jasperReport,parametro,cn);
-    JasperViewer view = new JasperViewer(print,false);
-    view.setVisible(true);
-    
-    }
-    
-    catch(JRException ex){
-        Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
+
+            String ubicacionReporte = System.getProperty("user.dir") + "/src/inventario/ReporteSerial.jasper";
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(ubicacionReporte);
+
+            Map parametro = new HashMap();
+
+            parametro.put("serial", txtserial.getText());
+
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parametro, cn);
+            JasperViewer view = new JasperViewer(print, false);
+            view.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(consulta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 

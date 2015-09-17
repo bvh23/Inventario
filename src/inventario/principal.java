@@ -1,3 +1,4 @@
+///Hecho por Brian Vargas Henao. CC. 1.022.097.226
 package inventario;
 
 import java.awt.Color;
@@ -7,13 +8,12 @@ public class principal extends javax.swing.JFrame {
 
     public principal() {
         initComponents();
-        
+
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
 
-        
         this.getContentPane().setBackground(Color.white);
-        
-        setExtendedState(principal.MAXIMIZED_BOTH);  
+
+        setExtendedState(principal.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setTitle("Pagina de inicio");
         setDefaultCloseOperation(0);
@@ -186,55 +186,55 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        formulario obj= new formulario();
+        formulario obj = new formulario();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        consulta obj= new consulta();
+        consulta obj = new consulta();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        modificar obj= new modificar();
+        modificar obj = new modificar();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        observaciones obj= new observaciones();
+        observaciones obj = new observaciones();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        login obj= new login();
+        login obj = new login();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        consultaobservaciones obj= new consultaobservaciones();
+        consultaobservaciones obj = new consultaobservaciones();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-      
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        Reporte_Serial obj= new Reporte_Serial();
+        Reporte_Serial obj = new Reporte_Serial();
         obj.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        Reporte_Mantenimientos obj= new Reporte_Mantenimientos();
+        Reporte_Mantenimientos obj = new Reporte_Mantenimientos();
         obj.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     public static void main(String args[]) {

@@ -1,5 +1,5 @@
-package inventario;
 ///Hecho por Brian Vargas Henao. CC. 1.022.097.226
+package inventario;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
@@ -761,7 +761,7 @@ public class modificar extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         int fila = t_datos.getSelectedRow();
         if (fila >= 0) {
-            
+
             cmbMotivo.setEnabled(true);
 
             t_Serial.setText(t_datos.getValueAt(fila, 1).toString());
@@ -786,8 +786,6 @@ public class modificar extends javax.swing.JFrame {
             t_MarcaR.setText(t_datos.getValueAt(fila, 29).toString());
             t_PlacaR.setText(t_datos.getValueAt(fila, 30).toString());
             t_ReferenciaR.setText(t_datos.getValueAt(fila, 31).toString());
-            
-            
 
         } else {
             JOptionPane.showMessageDialog(null, "No selecciono fila");

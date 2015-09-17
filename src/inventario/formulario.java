@@ -1,6 +1,5 @@
-package inventario;
-
 ///Hecho por Brian Vargas Henao. CC. 1.022.097.226
+package inventario;
 
 import java.awt.Color;
 import java.sql.Connection;
@@ -14,24 +13,24 @@ import javax.swing.JOptionPane;
 public class formulario extends javax.swing.JFrame {
 
     public formulario() {
-        
+
         initComponents();
-       
+
         this.getContentPane().setBackground(Color.white);
-        
+
         setExtendedState(formulario.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setLocationRelativeTo(null);
-        setTitle("Ingreso de datos");  
+        setTitle("Ingreso de datos");
         setDefaultCloseOperation(0);
         limpiar();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());   
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
     }
-        
-      void limpiar(){
-    
+
+    void limpiar() {
+
         t_CPU.setSelectedIndex(0);
-        t_serial.setText(""); 
+        t_serial.setText("");
         t_marca.setText("");
         t_placa.setText("");
         t_referencia.setText("");
@@ -64,42 +63,151 @@ public class formulario extends javax.swing.JFrame {
         t_MarcaR.setText("");
         t_PlacaR.setText("");
         t_ReferenciaR.setText("");
-    
+
     }
-      
-      public void Validar(){
-      
-      if(t_serial.getText().equals("")){jLabel31.setVisible(true);}else{jLabel31.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_dependencia.getSelectedItem().equals("Seleccione>>")){jLabel32.setVisible(true);}else{jLabel32.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(cmbSO.getSelectedItem().equals("Seleccione>>")){jLabel33.setVisible(true);}else{jLabel33.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_marca.getText().equals("")){jLabel34.setVisible(true);}else{jLabel34.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_usuario.getText().equals("")){jLabel35.setVisible(true);}else{jLabel35.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(cmbOffice.getSelectedItem().equals("Seleccione>>")){jLabel36.setVisible(true);}else{jLabel36.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_placa.getText().equals("")){jLabel37.setVisible(true);}else{jLabel37.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_Nombre.getText().equals("")){jLabel38.setVisible(true);}else{jLabel38.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(cmbAntivirus.getSelectedItem().equals("Seleccione>>")){jLabel39.setVisible(true);}else{jLabel39.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_referencia.getText().equals("")){jLabel40.setVisible(true);}else{jLabel40.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_Procesador.getText().equals("")){jLabel41.setVisible(true);}else{jLabel41.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_Disco.getText().equals("")){jLabel42.setVisible(true);}else{jLabel42.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_estado.getSelectedItem().equals("Seleccione>>")){jLabel43.setVisible(true);}else{jLabel43.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_ram.getText().equals("")){jLabel44.setVisible(true);}else{jLabel44.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_IP.getText().equals("")){jLabel45.setVisible(true);}else{jLabel45.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_SerialM1.getText().equals("")){jLabel48.setVisible(true);}else{jLabel48.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_MarcaM1.getText().equals("")){jLabel49.setVisible(true);}else{jLabel49.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_PlacaM1.getText().equals("")){jLabel50.setVisible(true);}else{jLabel50.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_ReferenciaM1.getText().equals("")){jLabel51.setVisible(true);}else{jLabel51.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_SerialT1.getText().equals("")){jLabel47.setVisible(true);}else{jLabel47.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_MarcaT1.getText().equals("")){jLabel52.setVisible(true);}else{jLabel52.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_PlacaT1.getText().equals("")){jLabel53.setVisible(true);}else{jLabel53.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_ReferenciaT1.getText().equals("")){jLabel54.setVisible(true);}else{jLabel54.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_SerialR.getText().equals("")){jLabel56.setVisible(true);}else{jLabel56.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_MarcaR.getText().equals("")){jLabel57.setVisible(true);}else{jLabel57.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_PlacaR.getText().equals("")){jLabel58.setVisible(true);}else{jLabel58.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      if(t_ReferenciaR.getText().equals("")){jLabel59.setVisible(true);}else{jLabel59.setVisible(false);}JOptionPane.showMessageDialog(null,"Campo Vacío.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-      
-      }
+
+    public void Validar() {
+
+        if (t_serial.getText().equals("")) {
+            jLabel31.setVisible(true);
+        } else {
+            jLabel31.setVisible(false);
+        }
+        if (t_dependencia.getSelectedItem().equals("Seleccione>>")) {
+            jLabel32.setVisible(true);
+        } else {
+            jLabel32.setVisible(false);
+        }
+        if (cmbSO.getSelectedItem().equals("Seleccione>>")) {
+            jLabel33.setVisible(true);
+        } else {
+            jLabel33.setVisible(false);
+        }
+        if (t_marca.getText().equals("")) {
+            jLabel34.setVisible(true);
+        } else {
+            jLabel34.setVisible(false);
+        }
+        if (t_usuario.getText().equals("")) {
+            jLabel35.setVisible(true);
+        } else {
+            jLabel35.setVisible(false);
+        }
+        if (cmbOffice.getSelectedItem().equals("Seleccione>>")) {
+            jLabel36.setVisible(true);
+        } else {
+            jLabel36.setVisible(false);
+        }
+        if (t_placa.getText().equals("")) {
+            jLabel37.setVisible(true);
+        } else {
+            jLabel37.setVisible(false);
+        }
+        if (t_Nombre.getText().equals("")) {
+            jLabel38.setVisible(true);
+        } else {
+            jLabel38.setVisible(false);
+        }
+        if (cmbAntivirus.getSelectedItem().equals("Seleccione>>")) {
+            jLabel39.setVisible(true);
+        } else {
+            jLabel39.setVisible(false);
+        }
+        if (t_referencia.getText().equals("")) {
+            jLabel40.setVisible(true);
+        } else {
+            jLabel40.setVisible(false);
+        }
+        if (t_Procesador.getText().equals("")) {
+            jLabel41.setVisible(true);
+        } else {
+            jLabel41.setVisible(false);
+        }
+        if (t_Disco.getText().equals("")) {
+            jLabel42.setVisible(true);
+        } else {
+            jLabel42.setVisible(false);
+        }
+        if (t_estado.getSelectedItem().equals("Seleccione>>")) {
+            jLabel43.setVisible(true);
+        } else {
+            jLabel43.setVisible(false);
+        }
+        if (t_ram.getText().equals("")) {
+            jLabel44.setVisible(true);
+        } else {
+            jLabel44.setVisible(false);
+        }
+        if (t_IP.getText().equals("")) {
+            jLabel45.setVisible(true);
+        } else {
+            jLabel45.setVisible(false);
+        }
+        if (t_SerialM1.getText().equals("")) {
+            jLabel48.setVisible(true);
+        } else {
+            jLabel48.setVisible(false);
+        }
+        if (t_MarcaM1.getText().equals("")) {
+            jLabel49.setVisible(true);
+        } else {
+            jLabel49.setVisible(false);
+        }
+        if (t_PlacaM1.getText().equals("")) {
+            jLabel50.setVisible(true);
+        } else {
+            jLabel50.setVisible(false);
+        }
+        if (t_ReferenciaM1.getText().equals("")) {
+            jLabel51.setVisible(true);
+        } else {
+            jLabel51.setVisible(false);
+        }
+        if (t_SerialT1.getText().equals("")) {
+            jLabel47.setVisible(true);
+        } else {
+            jLabel47.setVisible(false);
+        }
+        if (t_MarcaT1.getText().equals("")) {
+            jLabel52.setVisible(true);
+        } else {
+            jLabel52.setVisible(false);
+        }
+        if (t_PlacaT1.getText().equals("")) {
+            jLabel53.setVisible(true);
+        } else {
+            jLabel53.setVisible(false);
+        }
+        if (t_ReferenciaT1.getText().equals("")) {
+            jLabel54.setVisible(true);
+        } else {
+            jLabel54.setVisible(false);
+        }
+        if (t_SerialR.getText().equals("")) {
+            jLabel56.setVisible(true);
+        } else {
+            jLabel56.setVisible(false);
+        }
+        if (t_MarcaR.getText().equals("")) {
+            jLabel57.setVisible(true);
+        } else {
+            jLabel57.setVisible(false);
+        }
+        if (t_PlacaR.getText().equals("")) {
+            jLabel58.setVisible(true);
+        } else {
+            jLabel58.setVisible(false);
+        }
+        if (t_ReferenciaR.getText().equals("")) {
+            jLabel59.setVisible(true);
+        } else {
+            jLabel59.setVisible(false);
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
-    
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -879,26 +987,24 @@ public class formulario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-        principal obj= new principal();
+
+        principal obj = new principal();
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        
+
         conexion cc = new conexion();
         Connection cn = cc.conexion();
-        
-        String CPU,Serial,Marca,Placa,Referencia,Estado,Dependencia,Usuario,NombrePC,Procesador,RAM,SistemaOperativo,Office,Antivirus,DiscoDuro,Ip,FechaCompra,Monitor,SerialMonitor,MarcaMonitor,PlacaMonitor,ReferenciaMonitor,Teclado,SerialTeclado,MarcaTeclado,PlacaTeclado,ReferenciaTeclado,Mouse,SerialMouse,MarcaMouse,PlacaMouse,ReferenciaMouse;
-        String sql="";
-        
+
+        String CPU, Serial, Marca, Placa, Referencia, Estado, Dependencia, Usuario, NombrePC, Procesador, RAM, SistemaOperativo, Office, Antivirus, DiscoDuro, Ip, FechaCompra, Monitor, SerialMonitor, MarcaMonitor, PlacaMonitor, ReferenciaMonitor, Teclado, SerialTeclado, MarcaTeclado, PlacaTeclado, ReferenciaTeclado, Mouse, SerialMouse, MarcaMouse, PlacaMouse, ReferenciaMouse;
+        String sql = "";
+
         CPU = t_CPU.getSelectedItem().toString();
-        Serial = t_serial.getText();  
+        Serial = t_serial.getText();
         Marca = t_marca.getText();
         Placa = t_placa.getText();
         Referencia = t_referencia.getText();
@@ -912,13 +1018,13 @@ public class formulario extends javax.swing.JFrame {
         Office = cmbOffice.getSelectedItem().toString();
         Antivirus = cmbAntivirus.getSelectedItem().toString();
         DiscoDuro = t_Disco.getText();
-        Ip = t_IP.getText(); 
+        Ip = t_IP.getText();
         FechaCompra = t_fechadecompra.getSelectedItem().toString();
         Monitor = cmbMonitor.getSelectedItem().toString();
         SerialMonitor = t_SerialM1.getText();
         MarcaMonitor = t_MarcaM1.getText();
         PlacaMonitor = t_PlacaM1.getText();
-        ReferenciaMonitor = t_ReferenciaM1.getText(); 
+        ReferenciaMonitor = t_ReferenciaM1.getText();
         Teclado = cmbTeclado.getSelectedItem().toString();
         SerialTeclado = t_SerialT1.getText();
         MarcaTeclado = t_MarcaT1.getText();
@@ -928,68 +1034,66 @@ public class formulario extends javax.swing.JFrame {
         SerialMouse = t_SerialR.getText();
         MarcaMouse = t_MarcaR.getText();
         PlacaMouse = t_PlacaR.getText();
-        ReferenciaMouse = t_ReferenciaR.getText(); 
-        String fechaC=t_fechadecompra.getSelectedItem().toString()+"-" + t_fechadecompra2.getSelectedItem().toString()+"-"+ t_fechadecompra3.getSelectedItem().toString();
+        ReferenciaMouse = t_ReferenciaR.getText();
+        String fechaC = t_fechadecompra.getSelectedItem().toString() + "-" + t_fechadecompra2.getSelectedItem().toString() + "-" + t_fechadecompra3.getSelectedItem().toString();
 
         Validar();
-        
-        sql="INSERT INTO formulario (CPU,Serial,Marca,Placa,Referencia,Estado,Dependencia,Usuario,NombrePC,Procesador,RAM,SistemaOperativo,Office,Antivirus,DiscoDuro,Ip,FechaCompra,Monitor,SerialMonitor,MarcaMonitor,PlacaMonitor,ReferenciaMonitor,Teclado,SerialTeclado,MarcaTeclado,PlacaTeclado,ReferenciaTeclado,Mouse,SerialMouse,MarcaMouse,PlacaMouse,ReferenciaMouse) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        sql = "INSERT INTO formulario (CPU,Serial,Marca,Placa,Referencia,Estado,Dependencia,Usuario,NombrePC,Procesador,RAM,SistemaOperativo,Office,Antivirus,DiscoDuro,Ip,FechaCompra,Monitor,SerialMonitor,MarcaMonitor,PlacaMonitor,ReferenciaMonitor,Teclado,SerialTeclado,MarcaTeclado,PlacaTeclado,ReferenciaTeclado,Mouse,SerialMouse,MarcaMouse,PlacaMouse,ReferenciaMouse) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
-     
-        PreparedStatement pst1;
-        
+
+            PreparedStatement pst1;
+
             pst1 = cn.prepareStatement(sql);
-       
-        pst1.setString(1,CPU);
-        pst1.setString(2,Serial); 
-        pst1.setString(3,Marca);
-        pst1.setString(4,Placa);
-        pst1.setString(5,Referencia);
-        pst1.setString(6,Estado);
-        pst1.setString(7,Dependencia);
-        pst1.setString(8,Usuario);
-        pst1.setString(9,NombrePC);
-        pst1.setString(10,Procesador);
-        pst1.setString(11,RAM);
-        pst1.setString(12,SistemaOperativo);
-        pst1.setString(13,Office);
-        pst1.setString(14,Antivirus);
-        pst1.setString(15,DiscoDuro);
-        pst1.setString(16,Ip);
-        pst1.setString(17,fechaC);
-        pst1.setString(18,Monitor);
-        pst1.setString(19,SerialMonitor);
-        pst1.setString(20,MarcaMonitor);
-        pst1.setString(21,PlacaMonitor);
-        pst1.setString(22,ReferenciaMonitor);
-        pst1.setString(23,Teclado);
-        pst1.setString(24,SerialTeclado);
-        pst1.setString(25,MarcaTeclado);
-        pst1.setString(26,PlacaTeclado);
-        pst1.setString(27,ReferenciaTeclado);
-        pst1.setString(28,Mouse);
-        pst1.setString(29,SerialMouse);
-        pst1.setString(30,MarcaMouse);
-        pst1.setString(31,PlacaMouse);
-        pst1.setString(32,ReferenciaMouse);
-  
-        int a= pst1.executeUpdate();
-  
-        if (a>=0){
-            JOptionPane.showMessageDialog(null, "Registro guardado correctamente");
-            limpiar();
-        }  
-        
-        else{
+
+            pst1.setString(1, CPU);
+            pst1.setString(2, Serial);
+            pst1.setString(3, Marca);
+            pst1.setString(4, Placa);
+            pst1.setString(5, Referencia);
+            pst1.setString(6, Estado);
+            pst1.setString(7, Dependencia);
+            pst1.setString(8, Usuario);
+            pst1.setString(9, NombrePC);
+            pst1.setString(10, Procesador);
+            pst1.setString(11, RAM);
+            pst1.setString(12, SistemaOperativo);
+            pst1.setString(13, Office);
+            pst1.setString(14, Antivirus);
+            pst1.setString(15, DiscoDuro);
+            pst1.setString(16, Ip);
+            pst1.setString(17, fechaC);
+            pst1.setString(18, Monitor);
+            pst1.setString(19, SerialMonitor);
+            pst1.setString(20, MarcaMonitor);
+            pst1.setString(21, PlacaMonitor);
+            pst1.setString(22, ReferenciaMonitor);
+            pst1.setString(23, Teclado);
+            pst1.setString(24, SerialTeclado);
+            pst1.setString(25, MarcaTeclado);
+            pst1.setString(26, PlacaTeclado);
+            pst1.setString(27, ReferenciaTeclado);
+            pst1.setString(28, Mouse);
+            pst1.setString(29, SerialMouse);
+            pst1.setString(30, MarcaMouse);
+            pst1.setString(31, PlacaMouse);
+            pst1.setString(32, ReferenciaMouse);
+
+            int a = pst1.executeUpdate();
+
+            if (a >= 0) {
+                JOptionPane.showMessageDialog(null, "Registro guardado correctamente");
+                limpiar();
+            } else {
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No se pudo registrar:\n" + "Asegurese de que el serial que esta intentando registrar ya exista.\n" + "O asegurese de no haber ingresado la letra (ñ) en algún campo.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
 
         }
-   
-         } catch (SQLException ex) {
-            Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "No se pudo registrar:\n"+ "Asegurese de que el serial que esta intentando registrar ya exista.\n"+ "O asegurese de no haber ingresado la letra (ñ) en algún campo.", "Registro denegado",JOptionPane.ERROR_MESSAGE);
-         
-        }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmbOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOfficeActionPerformed
@@ -1129,4 +1233,3 @@ public class formulario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-

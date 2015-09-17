@@ -1,5 +1,5 @@
-package inventario;
 ///Hecho por Brian Vargas Henao. CC. 1.022.097.226
+package inventario;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -10,11 +10,10 @@ public class login extends javax.swing.JFrame {
 
     public login() {
         initComponents();
-                setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
 
-        
         this.getContentPane().setBackground(Color.white);
-        
+
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Ingreso al sistema");
@@ -171,23 +170,23 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-        System.exit(0); 
+
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        char clave[]=j_clave.getPassword();
-String clavedef=new String(clave);
-if (j_usuario.getText().equals("Administrador") && clavedef.equals("copacabana")){
-this.dispose();
-principal principal = new principal();
-principal.setVisible(true);
-}else {
-JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-+ "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
-JOptionPane.ERROR_MESSAGE);
-}
+
+        char clave[] = j_clave.getPassword();
+        String clavedef = new String(clave);
+        if (j_usuario.getText().equals("Administrador") && clavedef.equals("copacabana")) {
+            this.dispose();
+            principal principal = new principal();
+            principal.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
+                    + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
@@ -199,7 +198,7 @@ JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton1KeyReleased
 
     private void jButton1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusLost
-     // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1FocusLost
 
     private void j_claveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_j_claveKeyPressed
