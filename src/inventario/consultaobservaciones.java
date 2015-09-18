@@ -26,6 +26,17 @@ public class consultaobservaciones extends javax.swing.JFrame {
 
     public consultaobservaciones() {
         initComponents();
+        
+        this.getContentPane().setBackground(Color.white);
+
+        setExtendedState(consulta.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Consulta de Mantenimientos");
+
+        setDefaultCloseOperation(0);
+
+        
         cargar2("");
 
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
@@ -63,15 +74,7 @@ public class consultaobservaciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
 
-        this.getContentPane().setBackground(Color.white);
-
-        setExtendedState(consulta.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        setLocationRelativeTo(null);
-        setTitle("Consulta de Mantenimientos");
-
-        setDefaultCloseOperation(0);
-
+        
     }
 
     @SuppressWarnings("unchecked")

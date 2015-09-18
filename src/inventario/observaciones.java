@@ -3,18 +3,35 @@ package inventario;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class observaciones extends javax.swing.JFrame {
 
     public observaciones() {
         initComponents();
+
+        this.getContentPane().setBackground(Color.white);
+
+        setExtendedState(observaciones.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Observaciones");
+
+        setDefaultCloseOperation(0);
+
         limpiar();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/icono.png")).getImage());
     }
@@ -29,15 +46,6 @@ public class observaciones extends javax.swing.JFrame {
         t_Usuario.setText("");
         t_observacion.setText("");
         cmbDependencia.setSelectedIndex(0);
-
-        this.getContentPane().setBackground(Color.white);
-
-        setExtendedState(observaciones.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        setLocationRelativeTo(null);
-        setTitle("Observaciones");
-
-        setDefaultCloseOperation(0);
 
     }
 
@@ -72,6 +80,7 @@ public class observaciones extends javax.swing.JFrame {
         cmbDependencia = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         txtPlaca = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +94,9 @@ public class observaciones extends javax.swing.JFrame {
         t_serial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 t_serialKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                t_serialKeyReleased(evt);
             }
         });
 
@@ -148,6 +160,13 @@ public class observaciones extends javax.swing.JFrame {
 
         txtPlaca.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
 
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,9 +188,14 @@ public class observaciones extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(t_serial, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(t_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(t_serial, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(t_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3)
+                                    .addGap(70, 70, 70)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel3)
@@ -211,23 +235,29 @@ public class observaciones extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(t_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(t_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(cmbDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)))
+                        .addGap(35, 35, 35))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addGap(35, 35, 35))
+                        .addGap(1, 1, 1)
+                        .addComponent(jButton3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -283,7 +313,27 @@ public class observaciones extends javax.swing.JFrame {
 
     private void t_serialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_serialKeyPressed
 
+       
+
+        
     }//GEN-LAST:event_t_serialKeyPressed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        
+        
+        
+      
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void t_serialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_serialKeyReleased
+        int key = evt.getKeyCode();
+        if (evt.getSource() == t_serial) {
+            if (key == KeyEvent.VK_ENTER) {
+                Toolkit.getDefaultToolkit().beep();
+                t_serial.requestFocusInWindow();
+            }}
+    }//GEN-LAST:event_t_serialKeyReleased
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -320,6 +370,7 @@ public class observaciones extends javax.swing.JFrame {
     private javax.swing.JComboBox cmbDependencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -336,4 +387,7 @@ public class observaciones extends javax.swing.JFrame {
     private javax.swing.JTextField t_serial;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
+
+conexion cc = new conexion();
+        Connection cn = cc.conexion();
 }
