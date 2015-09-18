@@ -29,6 +29,17 @@ public class consulta extends javax.swing.JFrame {
 
     public consulta() {
         initComponents();
+        
+        
+        this.getContentPane().setBackground(Color.white);
+
+        setExtendedState(consulta.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        setTitle("Consulta de datos");
+
+        setDefaultCloseOperation(0);
+        
         cargar("");
         txtcant.setText("" + t_datos.getRowCount());
 
@@ -96,14 +107,6 @@ public class consulta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
 
-        this.getContentPane().setBackground(Color.white);
-
-        setExtendedState(consulta.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        setLocationRelativeTo(null);
-        setTitle("Consulta de datos");
-
-        setDefaultCloseOperation(0);
 
     }
 
