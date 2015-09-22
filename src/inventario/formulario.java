@@ -68,144 +68,308 @@ public class formulario extends javax.swing.JFrame {
 
     public void Validar() {
 
+        int cont = 0;
+        
         if (t_serial.getText().equals("")) {
             jLabel31.setVisible(true);
+            cont=1;
         } else {
             jLabel31.setVisible(false);
+            cont=0;
         }
         if (t_dependencia.getSelectedItem().equals("Seleccione>>")) {
             jLabel32.setVisible(true);
+            cont=1;
         } else {
             jLabel32.setVisible(false);
+            cont=0;
         }
         if (cmbSO.getSelectedItem().equals("Seleccione>>")) {
             jLabel33.setVisible(true);
+            cont=1;
         } else {
             jLabel33.setVisible(false);
+            cont=0;
         }
         if (t_marca.getText().equals("")) {
             jLabel34.setVisible(true);
+            cont=1;
         } else {
             jLabel34.setVisible(false);
+            cont=0;
         }
         if (t_usuario.getText().equals("")) {
             jLabel35.setVisible(true);
+            cont=1;
         } else {
             jLabel35.setVisible(false);
+            cont=0;
         }
         if (cmbOffice.getSelectedItem().equals("Seleccione>>")) {
             jLabel36.setVisible(true);
+            cont=1;
         } else {
             jLabel36.setVisible(false);
+            cont=0;
         }
         if (t_placa.getText().equals("")) {
             jLabel37.setVisible(true);
+            cont=1;
         } else {
             jLabel37.setVisible(false);
+            cont=0;
         }
         if (t_Nombre.getText().equals("")) {
             jLabel38.setVisible(true);
+            cont=1;
         } else {
             jLabel38.setVisible(false);
+            cont=0;
         }
         if (cmbAntivirus.getSelectedItem().equals("Seleccione>>")) {
             jLabel39.setVisible(true);
+            cont=1;
         } else {
             jLabel39.setVisible(false);
+            cont=0;
         }
         if (t_referencia.getText().equals("")) {
             jLabel40.setVisible(true);
+            cont=1;
         } else {
             jLabel40.setVisible(false);
+            cont=0;
         }
         if (t_Procesador.getText().equals("")) {
             jLabel41.setVisible(true);
+            cont=1;
         } else {
             jLabel41.setVisible(false);
+            cont=0;
         }
         if (t_Disco.getText().equals("")) {
             jLabel42.setVisible(true);
+            cont=1;
         } else {
             jLabel42.setVisible(false);
+            cont=0;
         }
         if (t_estado.getSelectedItem().equals("Seleccione>>")) {
             jLabel43.setVisible(true);
+            cont=1;
         } else {
             jLabel43.setVisible(false);
+            cont=0;
         }
         if (t_ram.getText().equals("")) {
             jLabel44.setVisible(true);
+            cont=1;
         } else {
             jLabel44.setVisible(false);
+            cont=0;
         }
         if (t_IP.getText().equals("")) {
             jLabel45.setVisible(true);
+            cont=1;
         } else {
             jLabel45.setVisible(false);
+            cont=0;
         }
         if (t_SerialM1.getText().equals("")) {
             jLabel48.setVisible(true);
+            cont=1;
         } else {
             jLabel48.setVisible(false);
+            cont=0;
         }
         if (t_MarcaM1.getText().equals("")) {
             jLabel49.setVisible(true);
+            cont=1;
         } else {
             jLabel49.setVisible(false);
+            cont=0;
         }
         if (t_PlacaM1.getText().equals("")) {
             jLabel50.setVisible(true);
+            cont=1;
         } else {
             jLabel50.setVisible(false);
+            cont=0;
         }
         if (t_ReferenciaM1.getText().equals("")) {
             jLabel51.setVisible(true);
+           cont=1;
         } else {
             jLabel51.setVisible(false);
+            cont=0;
         }
         if (t_SerialT1.getText().equals("")) {
             jLabel47.setVisible(true);
+            cont=1;
         } else {
             jLabel47.setVisible(false);
+            cont=0;
         }
         if (t_MarcaT1.getText().equals("")) {
             jLabel52.setVisible(true);
+            cont=1;
         } else {
             jLabel52.setVisible(false);
+            cont=0;
         }
         if (t_PlacaT1.getText().equals("")) {
             jLabel53.setVisible(true);
+            cont=1;
         } else {
             jLabel53.setVisible(false);
+            cont=0;
         }
         if (t_ReferenciaT1.getText().equals("")) {
             jLabel54.setVisible(true);
+            cont=1;
         } else {
             jLabel54.setVisible(false);
+            cont=0;
         }
         if (t_SerialR.getText().equals("")) {
             jLabel56.setVisible(true);
+            cont=1;
         } else {
             jLabel56.setVisible(false);
+            cont=0;
         }
         if (t_MarcaR.getText().equals("")) {
             jLabel57.setVisible(true);
+            cont=1;
         } else {
             jLabel57.setVisible(false);
+            cont=0;
         }
         if (t_PlacaR.getText().equals("")) {
             jLabel58.setVisible(true);
+            cont=1;
         } else {
             jLabel58.setVisible(false);
+            cont=0;
         }
         if (t_ReferenciaR.getText().equals("")) {
             jLabel59.setVisible(true);
+            cont=1;
         } else {
             jLabel59.setVisible(false);
+            cont=0;
         }
+        
+        if (cont==0){
+        
+        guardardatos();
+        
+        }else{
+        JOptionPane.showMessageDialog(null, "No se pudo registrar:\n" + "Tiene Campos vacíos.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+ }
 
     }
 
+    public void guardardatos(){
+ 
+        String CPU, Serial, Marca, Placa, Referencia, Estado, Dependencia, Usuario, NombrePC, Procesador, RAM, SistemaOperativo, Office, Antivirus, DiscoDuro, Ip, FechaCompra, Monitor, SerialMonitor, MarcaMonitor, PlacaMonitor, ReferenciaMonitor, Teclado, SerialTeclado, MarcaTeclado, PlacaTeclado, ReferenciaTeclado, Mouse, SerialMouse, MarcaMouse, PlacaMouse, ReferenciaMouse;
+        String sql = "";
+
+        CPU = t_CPU.getSelectedItem().toString();
+        Serial = t_serial.getText();
+        Marca = t_marca.getText();
+        Placa = t_placa.getText();
+        Referencia = t_referencia.getText();
+        Estado = t_estado.getSelectedItem().toString();
+        Dependencia = t_dependencia.getSelectedItem().toString();
+        Usuario = t_usuario.getText();
+        NombrePC = t_Nombre.getText();
+        Procesador = t_Procesador.getText();
+        RAM = t_ram.getText();
+        SistemaOperativo = cmbSO.getSelectedItem().toString();
+        Office = cmbOffice.getSelectedItem().toString();
+        Antivirus = cmbAntivirus.getSelectedItem().toString();
+        DiscoDuro = t_Disco.getText();
+        Ip = t_IP.getText();
+        FechaCompra = t_fechadecompra.getSelectedItem().toString();
+        Monitor = cmbMonitor.getSelectedItem().toString();
+        SerialMonitor = t_SerialM1.getText();
+        MarcaMonitor = t_MarcaM1.getText();
+        PlacaMonitor = t_PlacaM1.getText();
+        ReferenciaMonitor = t_ReferenciaM1.getText();
+        Teclado = cmbTeclado.getSelectedItem().toString();
+        SerialTeclado = t_SerialT1.getText();
+        MarcaTeclado = t_MarcaT1.getText();
+        PlacaTeclado = t_PlacaT1.getText();
+        ReferenciaTeclado = t_ReferenciaT1.getText();
+        Mouse = cmbMouse.getSelectedItem().toString();
+        SerialMouse = t_SerialR.getText();
+        MarcaMouse = t_MarcaR.getText();
+        PlacaMouse = t_PlacaR.getText();
+        ReferenciaMouse = t_ReferenciaR.getText();
+        String fechaC = t_fechadecompra.getSelectedItem().toString() + "-" + t_fechadecompra2.getSelectedItem().toString() + "-" + t_fechadecompra3.getSelectedItem().toString();
+
+       
+
+        sql = "INSERT INTO formulario (CPU,Serial,Marca,Placa,Referencia,Estado,Dependencia,Usuario,NombrePC,Procesador,RAM,SistemaOperativo,Office,Antivirus,DiscoDuro,Ip,FechaCompra,Monitor,SerialMonitor,MarcaMonitor,PlacaMonitor,ReferenciaMonitor,Teclado,SerialTeclado,MarcaTeclado,PlacaTeclado,ReferenciaTeclado,Mouse,SerialMouse,MarcaMouse,PlacaMouse,ReferenciaMouse) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            
+            conexion cc = new conexion();
+        Connection cn = cc.conexion();
+
+            PreparedStatement pst1;
+
+            pst1 = cn.prepareStatement(sql);
+
+            pst1.setString(1, CPU);
+            pst1.setString(2, Serial);
+            pst1.setString(3, Marca);
+            pst1.setString(4, Placa);
+            pst1.setString(5, Referencia);
+            pst1.setString(6, Estado);
+            pst1.setString(7, Dependencia);
+            pst1.setString(8, Usuario);
+            pst1.setString(9, NombrePC);
+            pst1.setString(10, Procesador);
+            pst1.setString(11, RAM);
+            pst1.setString(12, SistemaOperativo);
+            pst1.setString(13, Office);
+            pst1.setString(14, Antivirus);
+            pst1.setString(15, DiscoDuro);
+            pst1.setString(16, Ip);
+            pst1.setString(17, fechaC);
+            pst1.setString(18, Monitor);
+            pst1.setString(19, SerialMonitor);
+            pst1.setString(20, MarcaMonitor);
+            pst1.setString(21, PlacaMonitor);
+            pst1.setString(22, ReferenciaMonitor);
+            pst1.setString(23, Teclado);
+            pst1.setString(24, SerialTeclado);
+            pst1.setString(25, MarcaTeclado);
+            pst1.setString(26, PlacaTeclado);
+            pst1.setString(27, ReferenciaTeclado);
+            pst1.setString(28, Mouse);
+            pst1.setString(29, SerialMouse);
+            pst1.setString(30, MarcaMouse);
+            pst1.setString(31, PlacaMouse);
+            pst1.setString(32, ReferenciaMouse);
+
+            int a = pst1.executeUpdate();
+
+            if (a >= 0) {
+                JOptionPane.showMessageDialog(null, "Registro guardado correctamente");
+                limpiar();
+            } else {
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No se pudo registrar:\n" + "Asegurese de que el serial que esta intentando registrar ya exista.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+
+        }}
+    
+    
     @SuppressWarnings("unchecked")
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -997,103 +1161,9 @@ public class formulario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        conexion cc = new conexion();
-        Connection cn = cc.conexion();
-
-        String CPU, Serial, Marca, Placa, Referencia, Estado, Dependencia, Usuario, NombrePC, Procesador, RAM, SistemaOperativo, Office, Antivirus, DiscoDuro, Ip, FechaCompra, Monitor, SerialMonitor, MarcaMonitor, PlacaMonitor, ReferenciaMonitor, Teclado, SerialTeclado, MarcaTeclado, PlacaTeclado, ReferenciaTeclado, Mouse, SerialMouse, MarcaMouse, PlacaMouse, ReferenciaMouse;
-        String sql = "";
-
-        CPU = t_CPU.getSelectedItem().toString();
-        Serial = t_serial.getText();
-        Marca = t_marca.getText();
-        Placa = t_placa.getText();
-        Referencia = t_referencia.getText();
-        Estado = t_estado.getSelectedItem().toString();
-        Dependencia = t_dependencia.getSelectedItem().toString();
-        Usuario = t_usuario.getText();
-        NombrePC = t_Nombre.getText();
-        Procesador = t_Procesador.getText();
-        RAM = t_ram.getText();
-        SistemaOperativo = cmbSO.getSelectedItem().toString();
-        Office = cmbOffice.getSelectedItem().toString();
-        Antivirus = cmbAntivirus.getSelectedItem().toString();
-        DiscoDuro = t_Disco.getText();
-        Ip = t_IP.getText();
-        FechaCompra = t_fechadecompra.getSelectedItem().toString();
-        Monitor = cmbMonitor.getSelectedItem().toString();
-        SerialMonitor = t_SerialM1.getText();
-        MarcaMonitor = t_MarcaM1.getText();
-        PlacaMonitor = t_PlacaM1.getText();
-        ReferenciaMonitor = t_ReferenciaM1.getText();
-        Teclado = cmbTeclado.getSelectedItem().toString();
-        SerialTeclado = t_SerialT1.getText();
-        MarcaTeclado = t_MarcaT1.getText();
-        PlacaTeclado = t_PlacaT1.getText();
-        ReferenciaTeclado = t_ReferenciaT1.getText();
-        Mouse = cmbMouse.getSelectedItem().toString();
-        SerialMouse = t_SerialR.getText();
-        MarcaMouse = t_MarcaR.getText();
-        PlacaMouse = t_PlacaR.getText();
-        ReferenciaMouse = t_ReferenciaR.getText();
-        String fechaC = t_fechadecompra.getSelectedItem().toString() + "-" + t_fechadecompra2.getSelectedItem().toString() + "-" + t_fechadecompra3.getSelectedItem().toString();
-
         Validar();
-
-        sql = "INSERT INTO formulario (CPU,Serial,Marca,Placa,Referencia,Estado,Dependencia,Usuario,NombrePC,Procesador,RAM,SistemaOperativo,Office,Antivirus,DiscoDuro,Ip,FechaCompra,Monitor,SerialMonitor,MarcaMonitor,PlacaMonitor,ReferenciaMonitor,Teclado,SerialTeclado,MarcaTeclado,PlacaTeclado,ReferenciaTeclado,Mouse,SerialMouse,MarcaMouse,PlacaMouse,ReferenciaMouse) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-
-            PreparedStatement pst1;
-
-            pst1 = cn.prepareStatement(sql);
-
-            pst1.setString(1, CPU);
-            pst1.setString(2, Serial);
-            pst1.setString(3, Marca);
-            pst1.setString(4, Placa);
-            pst1.setString(5, Referencia);
-            pst1.setString(6, Estado);
-            pst1.setString(7, Dependencia);
-            pst1.setString(8, Usuario);
-            pst1.setString(9, NombrePC);
-            pst1.setString(10, Procesador);
-            pst1.setString(11, RAM);
-            pst1.setString(12, SistemaOperativo);
-            pst1.setString(13, Office);
-            pst1.setString(14, Antivirus);
-            pst1.setString(15, DiscoDuro);
-            pst1.setString(16, Ip);
-            pst1.setString(17, fechaC);
-            pst1.setString(18, Monitor);
-            pst1.setString(19, SerialMonitor);
-            pst1.setString(20, MarcaMonitor);
-            pst1.setString(21, PlacaMonitor);
-            pst1.setString(22, ReferenciaMonitor);
-            pst1.setString(23, Teclado);
-            pst1.setString(24, SerialTeclado);
-            pst1.setString(25, MarcaTeclado);
-            pst1.setString(26, PlacaTeclado);
-            pst1.setString(27, ReferenciaTeclado);
-            pst1.setString(28, Mouse);
-            pst1.setString(29, SerialMouse);
-            pst1.setString(30, MarcaMouse);
-            pst1.setString(31, PlacaMouse);
-            pst1.setString(32, ReferenciaMouse);
-
-            int a = pst1.executeUpdate();
-
-            if (a >= 0) {
-                JOptionPane.showMessageDialog(null, "Registro guardado correctamente");
-                limpiar();
-            } else {
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "No se pudo registrar:\n" + "Asegurese de que el serial que esta intentando registrar ya exista.\n" + "O asegurese de no haber ingresado la letra (ñ) en algún campo.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
-
-        }
-
+        
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmbOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbOfficeActionPerformed

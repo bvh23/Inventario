@@ -57,6 +57,123 @@ public class observaciones extends javax.swing.JFrame {
         t_fecha3.setSelectedIndex(0);
         t_observacion.setText("");
     }
+    
+    
+    public void Validar(){
+    
+    int cont = 0;
+        
+        if (t_serial.getText().equals("")) {
+            jLabel9.setVisible(true);
+            cont=1;
+        } else {
+            jLabel9.setVisible(false);
+            cont=0;
+        }
+         if (t_Usuario.getText().equals("")) {
+            jLabel10.setVisible(true);
+            cont=1;
+        } else {
+            jLabel10.setVisible(false);
+            cont=0;
+        }
+         if (txtPlaca.getText().equals("")) {
+            jLabel12.setVisible(true);
+            cont=1;
+        } else {
+            jLabel12.setVisible(false);
+            cont=0;
+        }
+        if (cmbDependencia.getSelectedItem().equals("Seleccione>>")) {
+            jLabel13.setVisible(true);
+            cont=1;
+        } else {
+            jLabel13.setVisible(false);
+            cont=0;
+        }
+         if (t_observacion.getText().equals("")) {
+            jLabel11.setVisible(true);
+            cont=1;
+        } else {
+            jLabel11.setVisible(false);
+            cont=0;
+        }
+        if (t_fecha1.getSelectedItem().equals("Mes>>")) {
+            jLabel8.setVisible(true);
+            cont=1;
+        } else {
+            jLabel8.setVisible(false);
+            cont=0;
+    
+    }
+         if (t_fecha2.getSelectedItem().equals("Dia>>")) {
+            jLabel8.setVisible(true);
+            cont=1;
+        } else {
+            jLabel8.setVisible(false);
+            cont=0;
+    
+    }
+          if (t_fecha3.getSelectedItem().equals("Año>>")) {
+            jLabel8.setVisible(true);
+            cont=1;
+        } else {
+            jLabel8.setVisible(false);
+            cont=0;
+    
+    }
+          if (cont==0){
+        
+        guardarobservacion();
+        
+        }else{
+        JOptionPane.showMessageDialog(null, "No se pudo registrar:\n" + "Tiene Campos vacíos.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+ }
+    }
+    
+    public void guardarobservacion(){
+    
+    conexion cc = new conexion();
+        Connection cn = cc.conexion();
+
+        String Serial, Placa, Usuario, Dependencia, FechaMantenimiento, Mantenimiento;
+        String sql = "";
+
+        Serial = t_serial.getText();
+        Placa = txtPlaca.getText();
+        Usuario = t_Usuario.getText();
+        Dependencia = cmbDependencia.getSelectedItem().toString();
+        FechaMantenimiento = t_fecha1.getSelectedItem().toString() + "-" + t_fecha2.getSelectedItem().toString() + "-" + t_fecha3.getSelectedItem().toString();
+        Mantenimiento = t_observacion.getText();
+
+        sql = "INSERT INTO observaciones (Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
+        try {
+            PreparedStatement pst;
+
+            pst = cn.prepareStatement(sql);
+
+            pst.setString(1, Serial);
+            pst.setString(2, Placa);
+            pst.setString(3, Usuario);
+            pst.setString(4, Dependencia);
+            pst.setString(5, FechaMantenimiento);
+            pst.setString(6, Mantenimiento);
+
+            int n = pst.executeUpdate();
+
+            if (n >= 0) {
+                JOptionPane.showMessageDialog(null, "Observación guardada correctamente");
+                limpiar();
+            }
+
+        } catch (SQLException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo Guardar el Mantenimiento:\n" + "\n" + "Asegurese de haber digitado el Serial del equipo al cual le realizaron el mantenimiento.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
+            System.out.print(e.getMessage());
+
+        }
+
+    
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -81,6 +198,12 @@ public class observaciones extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtPlaca = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,21 +290,47 @@ public class observaciones extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel8.setText("*");
+
+        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel9.setText("*");
+
+        jLabel10.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel10.setText("*");
+
+        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel11.setText("*");
+
+        jLabel12.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel12.setText("*");
+
+        jLabel13.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel13.setText("*");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
+                .addGap(179, 179, 179)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(jLabel6)))
-                    .addComponent(jLabel5))
+                            .addComponent(jLabel6))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -190,12 +339,16 @@ public class observaciones extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(t_serial, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 331, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(t_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                                     .addComponent(jButton3)
-                                    .addGap(70, 70, 70)))
+                                    .addGap(58, 58, 58)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel13))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel3)
@@ -214,7 +367,7 @@ public class observaciones extends javax.swing.JFrame {
                         .addComponent(t_fecha3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(361, Short.MAX_VALUE)
+                .addContainerGap(366, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(358, 358, 358))
         );
@@ -228,13 +381,16 @@ public class observaciones extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(t_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(t_fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(t_fecha3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(t_fecha3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(t_serial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel12))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -242,7 +398,9 @@ public class observaciones extends javax.swing.JFrame {
                             .addComponent(t_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(cmbDependencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel13))
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -250,7 +408,9 @@ public class observaciones extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                                 .addComponent(jButton2))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1)))
                         .addGap(35, 35, 35))
@@ -270,45 +430,7 @@ public class observaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        conexion cc = new conexion();
-        Connection cn = cc.conexion();
-
-        String Serial, Placa, Usuario, Dependencia, FechaMantenimiento, Mantenimiento;
-        String sql = "";
-
-        Serial = t_serial.getText();
-        Placa = txtPlaca.getText();
-        Usuario = t_Usuario.getText();
-        Dependencia = cmbDependencia.getSelectedItem().toString();
-        FechaMantenimiento = t_fecha1.getSelectedItem().toString() + "-" + t_fecha2.getSelectedItem().toString() + "-" + t_fecha3.getSelectedItem().toString();
-        Mantenimiento = t_observacion.getText();
-
-        sql = "INSERT INTO observaciones (Serial,Placa,Usuario,Dependencia,FechaMantenimiento,Mantenimiento) VALUES(?,?,?,?,?,?)";
-        try {
-            PreparedStatement pst;
-
-            pst = cn.prepareStatement(sql);
-
-            pst.setString(1, Serial);
-            pst.setString(2, Placa);
-            pst.setString(3, Usuario);
-            pst.setString(4, Dependencia);
-            pst.setString(5, FechaMantenimiento);
-            pst.setString(6, Mantenimiento);
-
-            int n = pst.executeUpdate();
-
-            if (n >= 0) {
-                JOptionPane.showMessageDialog(null, "Observación guardada correctamente");
-                limpiar();
-            }
-
-        } catch (SQLException | HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo Guardar el Mantenimiento:\n" + "\n" + "Asegurese de haber digitado el Serial del equipo al cual le realizaron el mantenimiento.", "Registro denegado", JOptionPane.ERROR_MESSAGE);
-            System.out.print(e.getMessage());
-
-        }
-
+        Validar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void t_serialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_t_serialKeyPressed
@@ -372,12 +494,18 @@ public class observaciones extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField t_Usuario;
     private javax.swing.JComboBox t_fecha1;
