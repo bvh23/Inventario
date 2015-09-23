@@ -141,7 +141,7 @@ public class consulta extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jLabel1.setText("Consulte los datos de los equipos registrados");
 
-        t_datos.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        t_datos.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         t_datos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -249,7 +249,7 @@ public class consulta extends javax.swing.JFrame {
         txtestado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione>>", "Activo", "De Baja" }));
 
         txtdependencia.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
-        txtdependencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione>>", "Catastro", "Desarrollo", "Infraestructura", "Valorizacion", "Archivo", "Almacen", "Planeacion", "Salud", "Sisben", "Control Interno", "Control Disciplinario", "Juridica", "Despacho 1a Dama", "Oficina de Calidad", "Alcaldia", "Hacienda", "Tesoreria", "Gobierno", "Sistemas", "Comunicaciones", "Inspeccion", "Transito", "Oficina de Empleo", "Comisaria de Familia", "Educacion", "Casa de la Cultura", "Programas Sociales", "Casa de la Mujer", "Invicop", "Junta de Daportes" }));
+        txtdependencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione>>", "Catastro", "Sec. Desarrollo", "Infraestructura", "Valorizacion", "Archivo", "Almacen", "Planeacion", "Salud", "Sisben", "Control Interno", "Control Disciplinario", "Juridica", "Despacho 1a Dama", "Oficina de Calidad", "Alcaldia", "Hacienda", "Tesoreria", "Gobierno", "Sistemas", "Comunicaciones", "Inspeccion", "Transito", "Oficina de Empleo", "Comisaria de Familia", "Educacion", "Casa de la Cultura", "Programas Sociales", "Casa de la Mujer", "Invicop", "Junta de Daportes" }));
 
         rdtodo.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         rdtodo.setText("Mostrar Todo");
@@ -563,7 +563,7 @@ public class consulta extends javax.swing.JFrame {
             this.t_datos.setModel(modelo);
             try {
 
-                String ConsultaSQL = "SELECT * FROM formulario WHERE usuario='" + usuario + "'";
+                String ConsultaSQL = "SELECT * FROM formulario WHERE Usuario='" + usuario + "'";
 
                 String[] registros = new String[32];
 
@@ -747,7 +747,7 @@ public class consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_rdserialActionPerformed
 
     private void rdestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdestadoActionPerformed
-        if (rdtodo.isSelected() == true) {
+        if (rdestado.isSelected() == true) {
             txtserial.setEnabled(false);
             txtserial.requestFocus();
             txtmarca.setEnabled(false);
@@ -756,8 +756,8 @@ public class consulta extends javax.swing.JFrame {
             txtplaca.setText("");
             txtusuario.setEnabled(false);
             txtusuario.setText("");
-            txtestado.setSelectedItem(0);
             txtestado.setEnabled(true);
+            txtestado.setSelectedItem(0); 
             txtdependencia.setEnabled(false);
             txtdependencia.setSelectedIndex(0);
             cargar("");

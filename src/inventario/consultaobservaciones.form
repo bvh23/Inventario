@@ -123,7 +123,7 @@
         <Component class="javax.swing.JTable" name="t_datos2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="12" style="0"/>
+              <Font name="Tempus Sans ITC" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -133,6 +133,7 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

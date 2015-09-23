@@ -99,7 +99,7 @@ public class consultaobservaciones extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        t_datos2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        t_datos2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         t_datos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -111,6 +111,7 @@ public class consultaobservaciones extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        t_datos2.setEnabled(false);
         jScrollPane1.setViewportView(t_datos2);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));

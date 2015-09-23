@@ -169,7 +169,7 @@
         <Component class="javax.swing.JTable" name="t_datos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="12" style="0"/>
+              <Font name="Tempus Sans ITC" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -335,7 +335,7 @@
           <StringArray count="31">
             <StringItem index="0" value="Seleccione&gt;&gt;"/>
             <StringItem index="1" value="Catastro"/>
-            <StringItem index="2" value="Desarrollo"/>
+            <StringItem index="2" value="Sec. Desarrollo"/>
             <StringItem index="3" value="Infraestructura"/>
             <StringItem index="4" value="Valorizacion"/>
             <StringItem index="5" value="Archivo"/>
