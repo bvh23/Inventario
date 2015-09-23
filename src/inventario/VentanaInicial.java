@@ -17,4 +17,10 @@ public class VentanaInicial {
 
         }
     }
+    catch(Exception e){
+    JOptionPane.showMessageDialog(null, "No hay conexion:\n" + "Error al conectar.", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
+            
+    }
+}
+    
 }
