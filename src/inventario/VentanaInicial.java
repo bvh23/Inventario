@@ -1,12 +1,16 @@
 package inventario;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 public class VentanaInicial {
 
     public static void main(String[] arg) {
         try {
-            
+            Connection conexion = null;
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost/inventario", "root", "");
+       
              JOptionPane.showMessageDialog(null, "Conexión Correcta");
 
             login log = new login();
@@ -17,10 +21,7 @@ public class VentanaInicial {
 
         }
     }
-    catch(Exception e){
-    JOptionPane.showMessageDialog(null, "No hay conexion:\n" + "Error al conectar.", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
-            
-    }
-}
+   
+
     
 }
