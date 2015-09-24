@@ -1,1 +1,0 @@
-Crear una libreria llamada JasperReport en el Netbeans y añadir esta libreria a nuestro proyecto

@@ -1,0 +1,10 @@
+D:\Repositorio VS2010\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\bin\Syncro-Calendar.dll
+D:\Repositorio VS2010\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\bin\Syncro-Calendar.pdb
+D:\Repositorio VS2010\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\obj\Debug\ResolveAssemblyReference.cache
+D:\Repositorio VS2010\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\obj\Debug\Syncro-Calendar.dll
+D:\Repositorio VS2010\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\obj\Debug\Syncro-Calendar.pdb
+C:\Users\Gsus\SyncroCalendar\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\bin\Syncro-Calendar.dll
+C:\Users\Gsus\SyncroCalendar\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\bin\Syncro-Calendar.pdb
+C:\Users\Gsus\SyncroCalendar\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\obj\Debug\Syncro-Calendar.dll
+C:\Users\Gsus\SyncroCalendar\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\obj\Debug\Syncro-Calendar.pdb
+C:\Users\Gsus\SyncroCalendar\Funlam-2015-03-SyncroCalendar\Syncro-Calendar\Syncro-Calendar\obj\Debug\Syncro-Calendar.csprojResolveAssemblyReference.cache
